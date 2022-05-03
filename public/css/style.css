@@ -1,0 +1,1037 @@
+#body{
+    font-family: 'Radio Canada', sans-serif;
+}
+
+/* Awal styling halaman pendaftaran pasien */
+
+#body .background{
+    background-color: #0C96C5;
+    height: 100vh;
+    position: fixed;
+    width: 70%;
+    display: none;
+}
+
+.background h3{
+    margin-bottom: 35px;
+    font-weight: bold;
+    color: #3B4148;
+}
+
+.background .wrapper{
+    width: 100%;
+    margin-left: 5rem;
+    margin-top:25px;
+    padding: 8rem 0;
+}
+
+.media{margin-top: 25px;}
+
+.media .media-bg{
+    background-color: #19A6D6;
+    width: 55px;
+    height: 55px;
+    border-radius: 10px;
+}
+
+.media .media-body{
+    padding: 5px 0;
+    margin-left: 16px;
+    color: #ffffff;
+}
+
+.media img{
+    height: 30px;
+    width: 30px;
+    margin: 13px;
+    display: block;
+}
+
+#body .card{
+    border-radius: 10px;
+    border: 1px solid #ffffff;
+    box-shadow: 7px 7px 35px rgba(59, 65, 75, 0.3);
+    width: 100%;
+    margin-top: 6rem;
+    position: relative;
+    right: 0px;
+    margin-bottom: 2rem;
+}
+
+.wrapper{ margin:10px; }
+
+.button-group{ margin-top: 5px; }
+
+.button-group .btn-block{margin-top: 15px;}
+
+.button-group .btn{
+    background-color: #ffffff;
+    border-radius: 8px;
+    border-color: #19A6D6;
+    height: 40px;
+}
+
+#body #form-baru{display: none;}
+
+.page{ margin: 25px 0px 25px 1.7rem}
+
+.page .btn{
+    border-radius: 100%;
+    height: 40px;
+    width: 40px;
+    border-color: #19A6D6;
+    margin:0px 20px 0px 0px;
+}
+
+.card .active{
+    background-color: #0C96C5;
+    color: #ffffff;
+}
+
+.card .active:hover{
+    background-color: #19A6D6;
+    color: #ffffff;
+}
+
+.button{float: right;}
+
+.card .wrapper h2{
+    font-weight: bold;
+    font-size: 25px;
+    color:#3B4148;
+}
+
+.card #form-pertama{display: block;}
+.card #form-kedua{display: none;}
+
+.form-kedua .button{margin-top:15px}
+
+#body #notif-kosong{
+    margin-bottom: 10px;
+    color: #ff0000;
+}
+/* Akhir styling halaman pendaftaran pasien */
+
+/* Awal styling halaman login petugas */
+#body .login-petugas{margin-top: 0px;}
+
+.bigTitle{
+    display: none;
+    margin-top: 5rem;
+}
+
+.bigTitle .smallTitle{
+    color: #3B4148;
+    font-weight: bold;
+}
+
+.bigTitle .title{
+    color: #3B4148;
+    font-weight: bold;
+    font-size: 40px;
+}
+
+.bigTitle .borderTitle{
+    color: #ffffff;
+    font-weight: bold;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #0C96C5;
+    font-size: 40px;
+}
+
+.card .wrapper .divider{
+    background-color: #69737B;
+    width: 100px;
+    height: 2px;
+    margin-top:15px;
+    margin-bottom:25px;
+    border-radius:10px;
+}
+
+.card .wrapper .form-title{
+    font-weight: bold;
+    color: #3B4148;
+}
+
+/* Akhir styling halaman login petugas */
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+    #body{
+        font-family: 'Radio Canada', sans-serif;
+    }
+    
+    /* Awal styling pendaftaran pasien */
+    #body .background{
+        background-color: #0C96C5;
+        height: 100vh;
+        position: fixed;
+        width: 70%;
+        display: none;
+    }
+    
+    .background h3{
+        margin-bottom: 35px;
+        font-weight: bold;
+        color: #3B4148;
+    }
+    
+    .background .wrapper{
+        width: 100%;
+        margin-left: 5rem;
+        margin-top:25px;
+        padding: 8rem 0;
+    }
+    
+    .media{margin-top: 25px;}
+    
+    .media .media-bg{
+        background-color: #19A6D6;
+        width: 55px;
+        height: 55px;
+        border-radius: 10px;
+    }
+    
+    .media .media-body{
+        padding: 5px 0;
+        margin-left: 16px;
+        color: #ffffff;
+    }
+    
+    .media img{
+        height: 30px;
+        width: 30px;
+        margin: 13px;
+        display: block;
+    }
+    
+    #body .card{
+        border-radius: 10px;
+        border: 1px solid #ffffff;
+        box-shadow: 7px 7px 35px rgba(59, 65, 75, 0.3);
+        width: 75%;
+        margin-top: 8rem;
+        position: relative;
+        right: -5rem;
+        margin-bottom: 2rem;
+    }
+    
+    .wrapper{ margin:10px; }
+    
+    .button-group{ margin-top: 5px; }
+    
+    .button-group .btn-block{margin-top: 15px;}
+    
+    .button-group .btn{
+        background-color: #ffffff;
+        border-radius: 8px;
+        border-color: #19A6D6;
+        height: 40px;
+    }
+    
+    #body #form-baru{display: none;}
+
+    .page{ margin: 25px 0px 25px 1.7rem}
+
+    .page .btn{
+        border-radius: 100%;
+        height: 40px;
+        width: 40px;
+        border-color: #19A6D6;
+        margin:0px 20px 0px 0px;
+    }
+    
+    .card .active{
+        background-color: #0C96C5;
+        color: #ffffff;
+    }
+    
+    .card .active:hover{
+        background-color: #19A6D6;
+        color: #ffffff;
+    }
+    
+    .button{float: right;}
+    
+    .card .wrapper h2{
+        font-weight: bold;
+        font-size: 25px;
+        color:#3B4148;
+    }
+    
+    .card #form-pertama{display: block;}
+    .card #form-kedua{display: none;}
+    
+    .form-kedua .button{margin-top:15px}
+
+    #body #notif-kosong{
+        margin-top: 10px;
+        color: #ff0000;
+    }
+    /* Akhir pendaftaran pasien */
+
+    /* Awal styling halaman login petugas */
+    #body .login-petugas{margin-top: 0px;}
+
+    .bigTitle{
+        display: none;
+        margin-top: 5rem;
+    }
+    
+    .bigTitle .smallTitle{
+        color: #3B4148;
+        font-weight: bold;
+    }
+    
+    .bigTitle .title{
+        color: #3B4148;
+        font-weight: bold;
+        font-size: 40px;
+    }
+    
+    .bigTitle .borderTitle{
+        color: #ffffff;
+        font-weight: bold;
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: #0C96C5;
+        font-size: 40px;
+    }
+    
+    .card .wrapper .divider{
+        background-color: #69737B;
+        width: 100px;
+        height: 2px;
+        margin-top:15px;
+        margin-bottom:25px;
+        border-radius:10px;
+    }
+    
+    .card .wrapper .form-title{
+        font-weight: bold;
+        color: #3B4148;
+    }
+
+    /* Akhir styling halaman login petugas */
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    #body{
+        font-family: 'Radio Canada', sans-serif;
+    }
+    
+    /* Awal styling pendaftaran pasien */
+    #body .background{
+        background-color: #0C96C5;
+        height: 100vh;
+        position: fixed;
+        width: 70%;
+        display: none;
+    }
+    
+    .background h3{
+        margin-bottom: 35px;
+        font-weight: bold;
+        color: #3B4148;
+    }
+    
+    .background .wrapper{
+        width: 100%;
+        margin-left: 5rem;
+        margin-top:25px;
+        padding: 8rem 0;
+    }
+    
+    .media{margin-top: 25px;}
+    
+    .media .media-bg{
+        background-color: #19A6D6;
+        width: 55px;
+        height: 55px;
+        border-radius: 10px;
+    }
+    
+    .media .media-body{
+        padding: 5px 0;
+        margin-left: 16px;
+        color: #ffffff;
+    }
+    
+    .media img{
+        height: 30px;
+        width: 30px;
+        margin: 13px;
+        display: block;
+    }
+    
+    #body .card{
+        border-radius: 10px;
+        border: 1px solid #ffffff;
+        box-shadow: 7px 7px 35px rgba(59, 65, 75, 0.3);
+        width: 55%;
+        margin-top: 15rem;
+        position: relative;
+        right: -11rem;
+        margin-bottom: 2rem;
+    }
+    
+    .wrapper{ margin:10px; }
+    
+    .button-group{ margin-top: 5px; }
+    
+    .button-group .btn-block{margin-top: 15px;}
+
+    .button-group .btn{
+        background-color: #ffffff;
+        border-radius: 8px;
+        border-color: #19A6D6;
+        height: 40px;
+    }
+    
+    #body #form-baru{display: none;}
+
+    .page{ margin: 25px 0px 25px 1.7rem}
+
+    .page .btn{
+        border-radius: 100%;
+        height: 40px;
+        width: 40px;
+        border-color: #19A6D6;
+        margin:0px 20px 0px 0px;
+    }
+    
+    .card .active{
+        background-color: #0C96C5;
+        color: #ffffff;
+    }
+    
+    .card .active:hover{
+        background-color: #19A6D6;
+        color: #ffffff;
+    }
+    
+    .button{float: right;}
+    
+    .card .wrapper h2{
+        font-weight: bold;
+        font-size: 25px;
+        color:#3B4148;
+    }
+    
+    .card #form-pertama{display: block;}
+    .card #form-kedua{display: none;}
+    
+    .form-kedua .button{margin-top:15px}
+
+    #body #notif-kosong{
+        margin-top: 10px;
+        color: #ff0000;
+    }
+    /* Akhir pendaftaran pasien */
+
+    /* Awal styling halaman login petugas */
+    #body .login-petugas{margin-top: 0px;}
+
+    .bigTitle{
+        display: none;
+        margin-top: 5rem;
+    }
+    
+    .bigTitle .smallTitle{
+        color: #3B4148;
+        font-weight: bold;
+    }
+    
+    .bigTitle .title{
+        color: #3B4148;
+        font-weight: bold;
+        font-size: 40px;
+    }
+    
+    .bigTitle .borderTitle{
+        color: #ffffff;
+        font-weight: bold;
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: #0C96C5;
+        font-size: 40px;
+    }
+    
+    .card .wrapper .divider{
+        background-color: #69737B;
+        width: 100px;
+        height: 2px;
+        margin-top:15px;
+        margin-bottom:25px;
+        border-radius:10px;
+    }
+    
+    .card .wrapper .form-title{
+        font-weight: bold;
+        color: #3B4148;
+    }
+
+    /* Akhir styling halaman login petugas */
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    #body{
+        font-family: 'Radio Canada', sans-serif;
+    }
+    
+    /* Awal styling pendaftaran pasien */
+    #body .background{
+        background-color: #0C96C5;
+        height: 100vh;
+        position: fixed;
+        width: 70%;
+        display: block;
+    }
+    
+    .background h3{
+        margin-bottom: 35px;
+        font-weight: bold;
+        color: #3B4148;
+    }
+    
+    .background .wrapper{
+        width: 100%;
+        margin-left: 5rem;
+        margin-top:25px;
+        padding: 8rem 0;
+    }
+    
+    .media{margin-top: 25px;width: 60%;}
+    
+    .media .media-bg{
+        background-color: #19A6D6;
+        width: 55px;
+        height: 55px;
+        border-radius: 10px;
+    }
+    
+    .media .media-body{
+        padding: 5px 0;
+        margin-left: 16px;
+        color: #ffffff;
+    }
+    
+    .media img{
+        height: 30px;
+        width: 30px;
+        margin: 13px;
+        display: block;
+    }
+    
+    #body .card{
+        border-radius: 10px;
+        border: 1px solid #ffffff;
+        box-shadow: 7px 7px 35px rgba(59, 65, 75, 0.3);
+        width: 75%;
+        margin-top: 1rem;
+        position: relative;
+        right: -5rem;
+       margin-bottom: 4rem;
+    }
+    
+    .wrapper{ margin:10px; }
+    
+    .button-group{ margin-top: 5px; }
+    
+    .button-group .btn-block{margin-top: 15px;}
+    
+    .button-group .btn{
+        background-color: #ffffff;
+        border-radius: 8px;
+        border-color: #19A6D6;
+        height: 40px;
+    }
+    
+    #body #form-baru{display: none;}
+
+    .page{ margin: 25px 0px 25px 1.7rem}
+
+    .page .btn{
+        border-radius: 100%;
+        height: 40px;
+        width: 40px;
+        border-color: #19A6D6;
+        margin:0px 20px 0px 0px;
+    }
+    
+    .card .active{
+        background-color: #0C96C5;
+        color: #ffffff;
+    }
+    
+    .card .active:hover{
+        background-color: #19A6D6;
+        color: #ffffff;
+    }
+    
+    .button{float: right;}
+    
+    .card .wrapper h2{
+        font-weight: bold;
+        font-size: 25px;
+        color:#3B4148;
+    }
+    
+    .card #form-pertama{display: block;}
+    .card #form-kedua{display: none;}
+    
+    .form-kedua .button{margin-top:15px}
+
+    #body #notif-kosong{
+        margin-top: 10px;
+        color: #ff0000;
+    }
+    /* Akhir styling pendaftaran pasien */
+
+    /* Awal styling halaman login petugas */
+    .disabled-scroll{
+        width: 100%;
+        overflow: hidden;
+    }
+
+    #body .circle-1{
+        background-color: rgba(12, 150, 197, 0.3);
+        height: 450px;
+        width: 450px;
+        position: absolute;
+        float: left;
+        bottom: -9rem;
+        left: -9rem;
+        border-radius: 100%;
+    }
+
+    #body .circle-2{
+        background-color: rgba(12, 150, 197, 0.3);
+        height: 300px;
+        width: 300px;
+        position: absolute;
+        float: right;
+        top: -9rem;
+        right: -9rem;
+        border-radius: 100%;
+    }
+
+    #body .login-petugas{margin-top: 6rem;}
+
+    .bigTitle{
+        display: block;
+        margin-top: 10rem;
+    }
+    
+    .bigTitle .smallTitle{
+        color: #3B4148;
+        font-weight: bold;
+    }
+    
+    .bigTitle .title{
+        color: #3B4148;
+        font-weight: bold;
+        font-size: 40px;
+    }
+    
+    .bigTitle .borderTitle{
+        color: #ffffff;
+        font-weight: bold;
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: #0C96C5;
+        font-size: 40px;
+    }
+    
+    .card .wrapper .divider{
+        background-color: #69737B;
+        width: 100px;
+        height: 2px;
+        margin-top:15px;
+        margin-bottom:25px;
+        border-radius:10px;
+    }
+    
+    .card .wrapper .form-title{
+        font-weight: bold;
+        color: #3B4148;
+    }
+
+    /* Akhir styling halaman login petugas */
+}
+
+/* X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    #body{
+        font-family: 'Radio Canada', sans-serif;
+    }
+    
+    /* Awal styling pendaftaran pasien */
+    #body .background{
+        background-color: #0C96C5;
+        height: 100vh;
+        position: fixed;
+        width: 70%;
+        display: block;
+    }
+    
+    .background h3{
+        margin-bottom: 35px;
+        font-weight: bold;
+        color: #3B4148;
+    }
+    
+    .background .wrapper{
+        width: 100%;
+        margin-left: 5rem;
+        margin-top:25px;
+        padding: 8rem 0;
+    }
+    
+    .media{margin-top: 25px;width: 60%;}
+    
+    .media .media-bg{
+        background-color: #19A6D6;
+        width: 55px;
+        height: 55px;
+        border-radius: 10px;
+    }
+    
+    .media .media-body{
+        padding: 5px 0;
+        margin-left: 16px;
+        color: #ffffff;
+    }
+    
+    .media img{
+        height: 30px;
+        width: 30px;
+        margin: 13px;
+        display: block;
+    }
+    
+    #body .card{
+        border-radius: 10px;
+        border: 1px solid #ffffff;
+        box-shadow: 7px 7px 35px rgba(59, 65, 75, 0.3);
+        width: 75%;
+        margin-top: 1rem;
+        position: relative;
+        right: -5rem;
+        margin-bottom: 4rem;
+    }
+    
+    .wrapper{ margin:10px; }
+    
+    .button-group{ margin-top: 5px; }
+    
+    .button-group .btn-block{margin-top: 15px;}
+    
+    .button-group .btn{
+        background-color: #ffffff;
+        border-radius: 8px;
+        border-color: #19A6D6;
+        height: 40px;
+    }
+
+    #body #form-baru{display: none;}
+    
+    .page{ margin: 25px 0px 25px 1.7rem}
+    .page .btn{
+        border-radius: 100%;
+        height: 40px;
+        width: 40px;
+        border-color: #19A6D6;
+        margin:0px 20px 0px 0px;
+    }
+    
+    .card .active{
+        background-color: #0C96C5;
+        color: #ffffff;
+    }
+    
+    .card .active:hover{
+        background-color: #19A6D6;
+        color: #ffffff;
+    }
+    
+    .button{float: right;}
+    
+    .card .wrapper h2{
+        font-weight: bold;
+        font-size: 25px;
+        color:#3B4148;
+    }
+    
+    .card #form-pertama{display: block;}
+    .card #form-kedua{display: none;}
+    
+    .form-kedua .button{margin-top:15px}
+
+    #body #notif-kosong{
+        margin-top: 10px;
+        color: #ff0000;
+    }
+    /* Akhir styling pendaftaran pasien */
+
+    /* Awal styling halaman login petugas */
+    .disabled-scroll{
+        width: 100%;
+        overflow: hidden;
+    }
+
+    #body .circle-1{
+        background-color: rgba(12, 150, 197, 0.3);
+        height: 450px;
+        width: 450px;
+        position: absolute;
+        float: left;
+        bottom: -9rem;
+        left: -9rem;
+        border-radius: 100%;
+    }
+
+    #body .circle-2{
+        background-color: rgba(12, 150, 197, 0.3);
+        height: 300px;
+        width: 300px;
+        position: absolute;
+        float: right;
+        top: -9rem;
+        right: -9rem;
+        border-radius: 100%;
+    }
+
+    #body .login-petugas{margin-top: 6rem;}
+
+    .bigTitle{
+        display: block;
+        margin-top: 10rem;
+    }
+    
+    .bigTitle .smallTitle{
+        color: #3B4148;
+        font-weight: bold;
+    }
+    
+    .bigTitle .title{
+        color: #3B4148;
+        font-weight: bold;
+        font-size: 40px;
+    }
+    
+    .bigTitle .borderTitle{
+        color: #ffffff;
+        font-weight: bold;
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: #0C96C5;
+        font-size: 40px;
+    }
+    
+    .card .wrapper .divider{
+        background-color: #69737B;
+        width: 100px;
+        height: 2px;
+        margin-top:15px;
+        margin-bottom:25px;
+        border-radius:10px;
+    }
+    
+    .card .wrapper .form-title{
+        font-weight: bold;
+        color: #3B4148;
+    }
+
+    /* Akhir styling halaman login petugas */
+}
+
+/* XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) {
+    #body{
+        font-family: 'Radio Canada', sans-serif;
+    }
+    
+    /* Awal styling pendaftaran pasien */
+    #body .background{
+        background-color: #0C96C5;
+        height: 100vh;
+        position: fixed;
+        width: 70%;
+        display: block;
+    }
+    
+    .background h3{
+        margin-bottom: 35px;
+        font-weight: bold;
+        color: #3B4148;
+    }
+    
+    .background .wrapper{
+        width: 100%;
+        margin-left: 5rem;
+        margin-top:25px;
+        padding: 8rem 0;
+    }
+    
+    .media{margin-top: 25px;width: 60%;}
+    
+    .media .media-bg{
+        background-color: #19A6D6;
+        width: 55px;
+        height: 55px;
+        border-radius: 10px;
+    }
+    
+    .media .media-body{
+        padding: 5px 0;
+        margin-left: 16px;
+        color: #ffffff;
+    }
+    
+    .media img{
+        height: 30px;
+        width: 30px;
+        margin: 13px;
+        display: block;
+    }
+    
+    #body .card{
+        border-radius: 10px;
+        border: 1px solid #ffffff;
+        box-shadow: 7px 7px 35px rgba(59, 65, 75, 0.3);
+        width: 75%;
+        margin-top: 1rem;
+        position: relative;
+        right: -5rem;
+        margin-bottom: 4rem;
+    }
+    
+    .wrapper{ margin:10px; }
+    
+    .button-group{ margin-top: 5px; }
+    
+    .button-group .btn-block{margin-top: 15px;}
+    
+    .button-group .btn-primary{
+        background-color: #19A6D6;
+        border-radius: 8px;
+        border-color: #19A6D6;
+        height: 40px;
+    }
+    
+    .button-group .btn-default{
+        background-color: #ffffff;
+        border-radius: 8px;
+        border-color: #19A6D6;
+        height: 40px;
+    }
+
+    #body #form-baru{display: none;}
+
+    .page{ margin: 25px 0px 25px 1.7rem}
+    .page .btn{
+        border-radius: 100%;
+        height: 40px;
+        width: 40px;
+        border-color: #19A6D6;
+        margin:0px 20px 0px 0px;
+    }
+    
+    .card .active{
+        background-color: #0C96C5;
+        color: #ffffff;
+    }
+    
+    .card .active:hover{
+        background-color: #19A6D6;
+        color: #ffffff;
+    }
+    
+    .button{float: right;}
+    
+    .card .wrapper h2{
+        font-weight: bold;
+        font-size: 25px;
+        color:#3B4148;
+    }
+    
+    .card #form-pertama{display: block;}
+    .card #form-kedua{display: none;}
+    
+    .form-kedua .button{margin-top:15px}
+
+    #body #notif-kosong{
+        margin-top: 10px;
+        color: #ff0000;
+    }
+    /* Akhir stytling pendaftaran pasien */
+
+    /* Awal styling halaman login petugas */
+    .disabled-scroll{
+        width: 100%;
+        overflow: hidden;
+    }
+
+    #body .circle-1{
+        background-color: rgba(12, 150, 197, 0.3);
+        height: 450px;
+        width: 450px;
+        position: absolute;
+        float: left;
+        bottom: -9rem;
+        left: -9rem;
+        border-radius: 100%;
+    }
+
+    #body .circle-2{
+        background-color: rgba(12, 150, 197, 0.3);
+        height: 300px;
+        width: 300px;
+        position: absolute;
+        float: right;
+        top: -9rem;
+        right: -9rem;
+        border-radius: 100%;
+    }
+
+    #body .login-petugas{margin-top: 6rem;}
+
+    .bigTitle{
+        display: block;
+        margin-top: 10rem;
+    }
+    
+    .bigTitle .smallTitle{
+        color: #3B4148;
+        font-weight: bold;
+    }
+    
+    .bigTitle .title{
+        color: #3B4148;
+        font-weight: bold;
+        font-size: 40px;
+    }
+    
+    .bigTitle .borderTitle{
+        color: #ffffff;
+        font-weight: bold;
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: #0C96C5;
+        font-size: 40px;
+    }
+    
+    .card .wrapper .divider{
+        background-color: #69737B;
+        width: 100px;
+        height: 2px;
+        margin-top:15px;
+        margin-bottom:25px;
+        border-radius:10px;
+    }
+    
+    .card .wrapper .form-title{
+        font-weight: bold;
+        color: #3B4148;
+    }
+
+    /* Akhir styling halaman login petugas */
+}
