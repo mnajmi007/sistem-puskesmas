@@ -188,5 +188,31 @@ $(function(){
         return false;
     });
 
-    // Akhircl pendaftaran pasien lama dan pasien baru
+    // Akhir pendaftaran pasien lama dan pasien baru
+    $("#masuk-petugas").prop("disabled", true);
+
+    $("#username, #pwd").keyup(function(){
+        var username = $("#username").val();
+        var pwd = $("#pwd").val();
+
+        if(username != '' && pwd != ''){
+            $("#masuk-petugas").prop("disabled", false);
+        }
+        else{
+            $("#masuk-petugas").prop("disabled", true);
+        }
+        return false;
+    });
+
+    // Submit data goes here
+    $("#masuk-petugas").click(function(){
+        var username = $("#username").val();
+        var pwd = $("#pwd").val();
+        var data = {
+            'username':username,
+            'pwd':pwd
+        }
+        $("#notif-kosong").html("<span>Data inserted!</span>");
+        return false;
+    });
 });

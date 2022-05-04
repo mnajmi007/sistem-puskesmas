@@ -6,17 +6,17 @@
                     <h3 class="form-title">Login Petugas</h3>
                     <div class="divider"></div>
                     <form action="#">
-                        <div id="notif-kosong"><span>Form tidak boleh kosong!</span></div>
+                        <div id="notif-kosong"></div>
                         <div class="form-group">
                             <label>Username</label>
-                            <input type="text" class="form-control" id="username" placeholder="Masukkan username...">
+                            <input type="text" class="form-control" id="username" placeholder="Masukkan username..." autocomplete="off">
                         </div>
                         <div class="form-group">
                             <label>Password</label>
-                            <input type="password" class="form-control pwd" placeholder="Masukkan password...">
+                            <input type="password" class="form-control pwd" id="pwd" placeholder="Masukkan password..." autocomplete="off">
                         </div>
                         <div class="button">
-                            <button type="button" class="btn btn-primary masuk" id="masuk">Masuk sekarang</button>
+                            <button type="button" class="btn btn-primary masuk" id="masuk-petugas">Masuk sekarang</button>
                         </div>
                     </form>
                 </div>
