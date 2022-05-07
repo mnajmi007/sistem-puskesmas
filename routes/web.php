@@ -24,3 +24,7 @@ Route::get('/pendaftaran-pasien', function(){
 Route::get('/login-petugas', function(){
     return view('loginPetugas');
 });
+
+Route::get('/dashboard-petugas', function(){
+    return view('dashPetugas');
+});

@@ -113,11 +113,38 @@
 /* Akhir styling halaman pendaftaran pasien */
 
 /* Awal styling halaman login petugas */
+.disabled-scroll{
+    width: 100%;
+    overflow: hidden;
+}
+
 #body .login-petugas{margin-top: 0px;}
 
+#body .circle-1{
+    background-color: rgba(12, 150, 197, 0.3);
+    height: 350px;
+    width: 350px;
+    position: absolute;
+    float: left;
+    bottom: -25rem;
+    left: -9rem;
+    border-radius: 100%;
+}
+
+#body .circle-2{
+    background-color: rgba(12, 150, 197, 0.3);
+    height: 300px;
+    width: 300px;
+    position: absolute;
+    float: right;
+    top: -9rem;
+    right: -9rem;
+    border-radius: 100%;
+}
+
 .bigTitle{
-    display: none;
-    margin-top: 5rem;
+    display: block;
+    margin-top: 10rem;
 }
 
 .bigTitle .smallTitle{
@@ -154,6 +181,37 @@
 }
 
 /* Akhir styling halaman login petugas */
+
+/* Awal styling halaman dashboard petugas */
+#body .sidebar{
+    background-color: #0C96C5;
+    height: 100%;
+    position: fixed;
+    width: 250px;
+    display: block;
+}
+
+#body .navigation{
+    padding: 20px 0;
+}
+
+#body .navigation ul li a{
+    color: #ffffff;
+    margin-top: 15px;
+}
+
+#body .navigation img{
+    width: 30px;
+    height: 30px;
+    margin-right: 16px;
+}
+
+#body .navigation .logout{
+    position: relative;
+    bottom: -11rem;
+}
+
+/* Akhir styling halaman dashboard petugas */
 
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
