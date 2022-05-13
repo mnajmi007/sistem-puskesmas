@@ -189,6 +189,8 @@ $(function(){
     });
 
     // Akhir pendaftaran pasien lama dan pasien baru
+
+    // Awal JS untuk login petugas
     $("#masuk-petugas").prop("disabled", true);
 
     $("#username, #pwd").keyup(function(){
@@ -213,6 +215,34 @@ $(function(){
             'pwd':pwd
         }
         $("#notif-kosong").html("<span>Data inserted!</span>");
+        return false;
+    });
+
+    // Akhir JS untuk login petugas
+
+    // JS untuk menampilkan sidebar
+    $("#show-bar").click(function(){
+        $("#sidebar").css("width", "250px");
+        $(".navigation").css("display", "block");
+        return false;
+    });
+
+    $(".close-bar").click(function(){
+        $("#sidebar").css("width", "0");
+        $(".navigation").css("display", "none");
+        return false;
+    });
+
+    // JS Dashboard Pasien
+    $("#lihat-pencarian").click(function(){
+        $("#form-pencarian-2").toggle();
+        return false;
+    });
+
+    $(".lihat-pasien-mobile").click(function(){
+        var ID = $(this).val();
+        $("#pasien1"+ID).toggle();
+        $("#form-pencarian-2").hide();
         return false;
     });
 });

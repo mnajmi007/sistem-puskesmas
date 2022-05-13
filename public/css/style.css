@@ -52,10 +52,12 @@
     border: 1px solid #ffffff;
     box-shadow: 7px 7px 35px rgba(59, 65, 75, 0.3);
     width: 100%;
-    margin-top: 6rem;
+    /* margin-top: 6rem; */
+    margin-top: 0px;
     position: relative;
     right: 0px;
-    margin-bottom: 2rem;
+    /* margin-bottom: 2rem; */
+    margin-bottom: 0px;
 }
 
 .wrapper{ margin:10px; }
@@ -187,12 +189,18 @@
     background-color: #0C96C5;
     height: 100%;
     position: fixed;
-    width: 250px;
-    display: block;
+    width: 0;
+    transition: 0.5s;
+    z-index: 1; /* Stay on top */
+    top: 0;
+    left: 0;
+    overflow-y: hidden;
 }
 
 #body .navigation{
     padding: 20px 0;
+    display: none;
+    transition: 0.2s;
 }
 
 #body .navigation ul li a{
@@ -208,10 +216,156 @@
 
 #body .navigation .logout{
     position: relative;
-    bottom: -11rem;
+    bottom: -5rem;
+}
+
+#body .dash-info{margin-top:25px}
+
+#body .dash-title .show-bar{
+    margin-left: -16px;
+    margin-bottom: 16px;
+}
+
+#body .dash-title h5{
+    color: #00CACD;
+    letter-spacing: 1px;
+}
+
+#body .dash-title h4{
+    color: #3B4148;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+#body .dash-info .overview .card{margin-top: 40px;}
+
+#body .dash-info .overview .overview-icon span{
+    position:absolute;
+    margin:10px;
+}
+
+#body .dash-info .overview .overview-icon{
+    background-color: #ffffff;
+    width: 48px;
+    height: 48px;
+    border-radius:15px;
+    box-shadow: 2px 2px 20px rgba(59, 65, 75, 0.3);
+    margin-bottom: 35px;
+    position: relative;
+}
+
+#body .graph{
+    margin-top: 70px;
+    margin-bottom: 30px;
+}
+
+#body .graph h5{
+    color: #3B4148;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+#body .graph #grafikPenyakit{
+    width: 375px;
+    height: auto;
+    margin-top:15px;
+}
+
+#body .graph #jml-kecamatan{
+    width: 375px;
+    height: auto;
+    margin-top:15px;
+}
+
+#body .graph #jenis-pekerjaan{
+    width: 375px;
+    height: auto;
+    margin-top:15px;
 }
 
 /* Akhir styling halaman dashboard petugas */
+
+/* Awal styling halaman dashboard daftar pasien */
+#body .dash-info .table{margin-top:60px}
+
+#body .dash-info .table .form-pencarian-1{
+    display: none;
+    border: 1px solid #3B4148;
+    border-radius: 10px;
+    padding:5px;
+    height: 100px;
+    margin-top: 30px;
+}
+
+#body .dash-info .table  input{
+    border: 1px solid #3B4148;
+    border-radius: 5px;
+}
+
+#body .dash-info .table  select{
+    border: 1px solid #3B4148;
+    border-radius: 5px;
+}
+
+#body .table h5{
+    color: #3B4148;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+#body .dash-info .daftar-pencarian-1{
+    display: none;
+    border: 1px solid #3B4148;
+    border-radius: 10px;
+    margin-top: 15px;
+}
+
+#body .table .aksi{
+    border-radius: 100%;
+    width: 35px;
+    height: 35px;
+    padding:2px;
+    background-color: #3B4148;
+}
+
+#body .pencarianMobile{display: block;}
+
+#body .table .lihat-pencarian{
+    margin-bottom: 25px;
+    margin-top: 15px;
+    background-color: #3B4148;
+    border-radius: 5px;
+    color: #ffffff;
+}
+
+#body .table .form-pencarian-2{
+    display: none;
+    border: 1px solid #3B4148;
+    border-radius: 10px;
+    padding:17px;
+    height: 75%;
+    margin-top: 30px;
+}
+
+#body .table .form-pencarian-2 .cari-pasien-2{
+    background-color: #3B4148;
+    border-radius: 5px;
+    color: #ffffff;
+}
+
+.info-aksi .btn-aksi-mobile{
+    width: 34px;
+    height:34px;
+    border-radius: 100%;
+    padding:1px;
+}
+
+.info-aksi .lihat-rm-mobile{
+    background-color: #00CACD;
+    margin-left:10px
+}
+
+/* Akhir styling halaman dashboard daftar pasien */
 
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
@@ -267,10 +421,10 @@
         border-radius: 10px;
         border: 1px solid #ffffff;
         box-shadow: 7px 7px 35px rgba(59, 65, 75, 0.3);
-        width: 75%;
-        margin-top: 8rem;
+        /* width: 75%; */
+        /* margin-top: 8rem; */
         position: relative;
-        right: -5rem;
+        /* right: -5rem; */
         margin-bottom: 2rem;
     }
     
@@ -370,6 +524,193 @@
     }
 
     /* Akhir styling halaman login petugas */
+
+    /* Awal styling halaman dashboard petugas */
+    #body .sidebar{
+        background-color: #0C96C5;
+        height: 100%;
+        position: fixed;
+        width: 0;
+        transition: 0.5s;
+        z-index: 1; /* Stay on top */
+        top: 0;
+        left: 0;
+        overflow-y: scroll;
+    }
+
+    #body .navigation{
+        padding: 20px 0;
+        display: none;
+        transition: 0.2s;
+    }
+
+    #body .navigation ul li a{
+        color: #ffffff;
+        margin-top: 15px;
+    }
+
+    #body .navigation img{
+        width: 30px;
+        height: 30px;
+        margin-right: 16px;
+    }
+
+    #body .navigation .logout{
+        position: relative;
+        bottom: -5rem;
+    }
+
+    #body .dash-info{margin-top:25px}
+
+    #body .dash-title .show-bar{
+        margin-left: -16px;
+        margin-bottom: 16px;
+    }
+
+    #body .dash-title h5{
+        color: #00CACD;
+        letter-spacing: 1px;
+    }
+
+    #body .dash-title h4{
+        color: #3B4148;
+        letter-spacing: 1px;
+        font-weight: bold;
+    }
+
+    #body .dash-info .overview .card{
+        margin-top: 40px;
+        width: 100%;
+    }
+
+    #body .dash-info .overview .overview-icon span{
+        position:absolute;
+        margin:10px;
+    }
+
+    #body .dash-info .overview .overview-icon{
+        background-color: #ffffff;
+        width: 48px;
+        height: 48px;
+        border-radius:15px;
+        box-shadow: 2px 2px 20px rgba(59, 65, 75, 0.3);
+        margin-bottom: 35px;
+        position: relative;
+    }
+
+    #body .graph{
+        margin-top: 70px;
+        margin-bottom: 30px;
+    }
+
+    #body .graph h5{
+        color: #3B4148;
+        letter-spacing: 1px;
+        font-weight: bold;
+    }
+
+    #body .graph #grafikPenyakit{
+        width: 100%;
+        height: auto;
+        margin-top:15px;
+    }
+
+    #body .graph #jml-kecamatan{
+        width: 100%;
+        height: auto;
+        margin-top:15px;
+    }
+
+    #body .graph #jenis-pekerjaan{
+        width: 100%;
+        height: auto;
+        margin-top:15px;
+    }
+
+    /* Akhir styling halaman dashboard petugas */
+
+    /* Awal styling halaman dashboard daftar pasien */
+    #body .dash-info .table{margin-top:60px}
+
+    #body .dash-info .table .form-pencarian-1{
+        display: none;
+        border: 1px solid #3B4148;
+        border-radius: 10px;
+        padding:5px;
+        height: 100px;
+        margin-top: 30px;
+    }
+
+    #body .dash-info .table  input{
+        border: 1px solid #3B4148;
+        border-radius: 5px;
+    }
+
+    #body .dash-info .table  select{
+        border: 1px solid #3B4148;
+        border-radius: 5px;
+    }
+
+    #body .table h5{
+        color: #3B4148;
+        letter-spacing: 1px;
+        font-weight: bold;
+    }
+
+    #body .dash-info .daftar-pencarian-1{
+        display: none;
+        border: 1px solid #3B4148;
+        border-radius: 10px;
+        margin-top: 15px;
+    }
+
+    #body .table .aksi{
+        border-radius: 100%;
+        width: 35px;
+        height: 35px;
+        padding:2px;
+        background-color: #3B4148;
+    }
+
+    #body .pencarianMobile{display: block;}
+
+    #body .table .lihat-pencarian{
+        margin-bottom: 25px;
+        margin-top: 15px;
+        background-color: #3B4148;
+        border-radius: 5px;
+        color: #ffffff;
+    }
+
+    #body .table .form-pencarian-2{
+        display: none;
+        border: 1px solid #3B4148;
+        border-radius: 10px;
+        padding:17px;
+        height: 75%;
+        margin-top: 30px;
+        margin-bottom: 25px;
+    }
+
+    #body .table .form-pencarian-2 .cari-pasien-2{
+        background-color: #3B4148;
+        border-radius: 5px;
+        color: #ffffff;
+    }
+
+    .info-aksi .btn-aksi-mobile{
+        width: 34px;
+        height:34px;
+        border-radius: 100%;
+        padding:1px;
+    }
+
+    .info-aksi .lihat-rm-mobile{
+        background-color: #00CACD;
+        margin-left:10px
+    }
+
+    /* Akhir styling halaman dashboard daftar pasien */
 }
 
 /* Medium devices (tablets, 768px and up) */
@@ -426,10 +767,10 @@
         border-radius: 10px;
         border: 1px solid #ffffff;
         box-shadow: 7px 7px 35px rgba(59, 65, 75, 0.3);
-        width: 55%;
-        margin-top: 15rem;
+        /* width: 55%; */
+        /* margin-top: 15rem; */
         position: relative;
-        right: -11rem;
+        /* right: -11rem; */
         margin-bottom: 2rem;
     }
     
@@ -529,6 +870,193 @@
     }
 
     /* Akhir styling halaman login petugas */
+
+    /* Awal styling halaman dashboard petugas */
+    #body .sidebar{
+        background-color: #0C96C5;
+        height: 100%;
+        position: fixed;
+        width: 0;
+        transition: 0.5s;
+        z-index: 1; /* Stay on top */
+        top: 0;
+        left: 0;
+        overflow-y: scroll;
+    }
+
+    #body .navigation{
+        padding: 20px 0;
+        display: none;
+        transition: 0.2s;
+    }
+
+    #body .navigation ul li a{
+        color: #ffffff;
+        margin-top: 15px;
+    }
+
+    #body .navigation img{
+        width: 30px;
+        height: 30px;
+        margin-right: 16px;
+    }
+
+    #body .navigation .logout{
+        position: relative;
+        bottom: -20rem;
+    }
+
+    #body .dash-info{margin-top:25px}
+
+    #body .dash-title .show-bar{
+        margin-left: -16px;
+        margin-bottom: 16px;
+    }
+
+    #body .dash-title h5{
+        color: #00CACD;
+        letter-spacing: 1px;
+    }
+
+    #body .dash-title h4{
+        color: #3B4148;
+        letter-spacing: 1px;
+        font-weight: bold;
+    }
+
+    #body .dash-info .overview .card{
+        margin-top: 40px;
+        width: 100%;
+    }
+
+    #body .dash-info .overview .overview-icon span{
+        position:absolute;
+        margin:10px;
+    }
+
+    #body .dash-info .overview .overview-icon{
+        background-color: #ffffff;
+        width: 48px;
+        height: 48px;
+        border-radius:15px;
+        box-shadow: 2px 2px 20px rgba(59, 65, 75, 0.3);
+        margin-bottom: 35px;
+        position: relative;
+    }
+
+    #body .graph{
+        margin-top: 70px;
+        margin-bottom: 30px;
+    }
+
+    #body .graph h5{
+        color: #3B4148;
+        letter-spacing: 1px;
+        font-weight: bold;
+    }
+
+    #body .graph #grafikPenyakit{
+        width: 100%;
+        height: auto;
+        margin-top:15px;
+    }
+
+    #body .graph #jml-kecamatan{
+        width: 100%;
+        height: auto;
+        margin-top:15px;
+    }
+
+    #body .graph #jenis-pekerjaan{
+        width: 100%;
+        height: auto;
+        margin-top:15px;
+    }
+
+    /* Akhir styling halaman dashboard petugas */
+
+    /* Awal styling halaman dashboard daftar pasien */
+    #body .dash-info .table{margin-top:60px}
+
+    #body .dash-info .table .form-pencarian-1{
+        display: none;
+        border: 1px solid #3B4148;
+        border-radius: 10px;
+        padding:5px;
+        height: 100px;
+        margin-top: 30px;
+    }
+
+    #body .dash-info .table  input{
+        border: 1px solid #3B4148;
+        border-radius: 5px;
+    }
+
+    #body .dash-info .table  select{
+        border: 1px solid #3B4148;
+        border-radius: 5px;
+    }
+
+    #body .table h5{
+        color: #3B4148;
+        letter-spacing: 1px;
+        font-weight: bold;
+    }
+
+    #body .dash-info .daftar-pencarian-1{
+        display: none;
+        border: 1px solid #3B4148;
+        border-radius: 10px;
+        margin-top: 15px;
+    }
+
+    #body .table .aksi{
+        border-radius: 100%;
+        width: 35px;
+        height: 35px;
+        padding:2px;
+        background-color: #3B4148;
+    }
+
+    #body .pencarianMobile{display: block;}
+
+    #body .table .lihat-pencarian{
+        margin-bottom: 25px;
+        margin-top: 15px;
+        background-color: #3B4148;
+        border-radius: 5px;
+        color: #ffffff;
+    }
+
+    #body .table .form-pencarian-2{
+        display: none;
+        border: 1px solid #3B4148;
+        border-radius: 10px;
+        padding:17px;
+        height: 75%;
+        margin-top: 30px;
+        margin-bottom: 25px;
+    }
+
+    #body .table .form-pencarian-2 .cari-pasien-2{
+        background-color: #3B4148;
+        border-radius: 5px;
+        color: #ffffff;
+    }
+
+    .info-aksi .btn-aksi-mobile{
+        width: 34px;
+        height:34px;
+        border-radius: 100%;
+        padding:1px;
+    }
+
+    .info-aksi .lihat-rm-mobile{
+        background-color: #00CACD;
+        margin-left:10px
+    }
+
+    /* Akhir styling halaman dashboard daftar pasien */
 }
 
 /* Large devices (desktops, 992px and up) */
@@ -585,11 +1113,11 @@
         border-radius: 10px;
         border: 1px solid #ffffff;
         box-shadow: 7px 7px 35px rgba(59, 65, 75, 0.3);
-        width: 75%;
+        /* width: 75%; */
         margin-top: 1rem;
         position: relative;
-        right: -5rem;
-       margin-bottom: 4rem;
+        /* right: -5rem; */
+       /* margin-bottom: 4rem; */
     }
     
     .wrapper{ margin:10px; }
@@ -715,6 +1243,187 @@
     }
 
     /* Akhir styling halaman login petugas */
+
+    /* Awal styling halaman dashboard petugas */
+    #body .sidebar{
+        background-color: #0C96C5;
+        height: 100%;
+        position: fixed;
+        width: 0;
+        transition: 0.5s;
+        z-index: 1; /* Stay on top */
+        top: 0;
+        left: 0;
+        overflow-y: scroll;
+    }
+
+    #body .navigation{
+        padding: 20px 0;
+        display: none;
+        transition: 0.2s;
+    }
+
+    #body .navigation ul li a{
+        color: #ffffff;
+        margin-top: 15px;
+    }
+
+    #body .navigation img{
+        width: 30px;
+        height: 30px;
+        margin-right: 16px;
+    }
+
+    #body .navigation .logout{
+        position: relative;
+        bottom: -5rem;
+    }
+
+    #body .dash-info{margin-top:25px}
+
+    #body .dash-title .show-bar{
+        margin-left: -16px;
+        margin-bottom: 16px;
+    }
+
+    #body .dash-title h5{
+        color: #00CACD;
+        letter-spacing: 1px;
+    }
+
+    #body .dash-title h4{
+        color: #3B4148;
+        letter-spacing: 1px;
+        font-weight: bold;
+    }
+
+    #body .dash-info .overview .card{
+        margin-top: 40px;
+        width: 100%;
+    }
+
+    #body .dash-info .overview .overview-icon span{
+        position:absolute;
+        margin:10px;
+    }
+
+    #body .dash-info .overview .overview-icon{
+        background-color: #ffffff;
+        width: 48px;
+        height: 48px;
+        border-radius:15px;
+        box-shadow: 2px 2px 20px rgba(59, 65, 75, 0.3);
+        margin-bottom: 35px;
+        position: relative;
+    }
+
+    #body .graph{
+        margin-top: 70px;
+        margin-bottom: 30px;
+    }
+
+    #body .graph h5{
+        color: #3B4148;
+        letter-spacing: 1px;
+        font-weight: bold;
+    }
+
+    #body .graph #grafikPenyakit{
+        width: 100%;
+        height: auto;
+        margin-top:15px;
+    }
+
+    #body .graph #jml-kecamatan{
+        width: 100%;
+        height: auto;
+        margin-top:15px;
+    }
+
+    #body .graph #jenis-pekerjaan{
+        width: 100%;
+        height: auto;
+        margin-top:15px;
+    }
+
+    /* Akhir styling halaman dashboard petugas */
+
+    /* Awal styling halaman dashboard daftar pasien */
+    #body .dash-info .table{margin-top:60px}
+
+    #body .dash-info .table .form-pencarian-1{
+        display: block;
+        border: 1px solid #3B4148;
+        border-radius: 10px;
+        padding:5px;
+        height: 100px;
+        margin-top: 30px;
+    }
+
+    #body .dash-info .table input select{
+        border: 1px solid #3B4148;
+        border-radius: 5px;
+    }
+
+    #body .table h5{
+        color: #3B4148;
+        letter-spacing: 1px;
+        font-weight: bold;
+    }
+
+    #body .dash-info .daftar-pencarian-1{
+        display: block;
+        border: 1px solid #3B4148;
+        border-radius: 10px;
+        margin-top: 15px;
+    }
+
+    #body .table .aksi{
+        border-radius: 100%;
+        width: 35px;
+        height: 35px;
+        padding:2px;
+        background-color: #3B4148;
+    }
+
+    #body .pencarianMobile{display: none;}
+
+    #body .table .lihat-pencarian{
+        margin-bottom: 25px;
+        margin-top: 15px;
+        background-color: #3B4148;
+        border-radius: 5px;
+        color: #ffffff;
+    }
+
+    #body .table .form-pencarian-2{
+        display: none;
+        border: 1px solid #3B4148;
+        border-radius: 10px;
+        padding:17px;
+        height: 75%;
+        margin-top: 30px;
+        margin-bottom: 25px;
+    }
+
+    #body .table .form-pencarian-2 .cari-pasien-2{
+        background-color: #3B4148;
+        border-radius: 5px;
+        color: #ffffff;
+    }
+
+    .info-aksi .btn-aksi-mobile{
+        width: 34px;
+        height:34px;
+        border-radius: 100%;
+        padding:1px;
+    }
+
+    .info-aksi .lihat-rm-mobile{
+        background-color: #00CACD;
+        margin-left:10px
+    }
+    /* Akhir styling halaman dashboard daftar pasien */
 }
 
 /* X-Large devices (large desktops, 1200px and up) */
@@ -771,11 +1480,11 @@
         border-radius: 10px;
         border: 1px solid #ffffff;
         box-shadow: 7px 7px 35px rgba(59, 65, 75, 0.3);
-        width: 75%;
+        /* width: 75%; */
         margin-top: 1rem;
         position: relative;
-        right: -5rem;
-        margin-bottom: 4rem;
+        /* right: -5rem; */
+        /* margin-bottom: 4rem; */
     }
     
     .wrapper{ margin:10px; }
@@ -900,6 +1609,187 @@
     }
 
     /* Akhir styling halaman login petugas */
+
+    /* Awal styling halaman dashboard petugas */
+    #body .sidebar{
+        background-color: #0C96C5;
+        height: 100%;
+        position: fixed;
+        width: 0;
+        transition: 0.5s;
+        z-index: 1; /* Stay on top */
+        top: 0;
+        left: 0;
+        overflow-y: scroll;
+    }
+
+    #body .navigation{
+        padding: 20px 0;
+        display: none;
+        transition: 0.2s;
+    }
+
+    #body .navigation ul li a{
+        color: #ffffff;
+        margin-top: 15px;
+    }
+
+    #body .navigation img{
+        width: 30px;
+        height: 30px;
+        margin-right: 16px;
+    }
+
+    #body .navigation .logout{
+        position: relative;
+        bottom: -5rem;
+    }
+
+    #body .dash-info{margin-top:25px}
+
+    #body .dash-title .show-bar{
+        margin-left: -16px;
+        margin-bottom: 16px;
+    }
+
+    #body .dash-title h5{
+        color: #00CACD;
+        letter-spacing: 1px;
+    }
+
+    #body .dash-title h4{
+        color: #3B4148;
+        letter-spacing: 1px;
+        font-weight: bold;
+    }
+
+    #body .dash-info .overview .card{
+        margin-top: 40px;
+        width: 100%;
+    }
+
+    #body .dash-info .overview .overview-icon span{
+        position:absolute;
+        margin:10px;
+    }
+
+    #body .dash-info .overview .overview-icon{
+        background-color: #ffffff;
+        width: 48px;
+        height: 48px;
+        border-radius:15px;
+        box-shadow: 2px 2px 20px rgba(59, 65, 75, 0.3);
+        margin-bottom: 35px;
+        position: relative;
+    }
+
+    #body .graph{
+        margin-top: 70px;
+        margin-bottom: 30px;
+    }
+
+    #body .graph h5{
+        color: #3B4148;
+        letter-spacing: 1px;
+        font-weight: bold;
+    }
+
+    #body .graph #grafikPenyakit{
+        width: 100%;
+        height: auto;
+        margin-top:15px;
+    }
+
+    #body .graph #jml-kecamatan{
+        width: 100%;
+        height: auto;
+        margin-top:15px;
+    }
+
+    #body .graph #jenis-pekerjaan{
+        width: 100%;
+        height: auto;
+        margin-top:15px;
+    }
+
+    /* Akhir styling halaman dashboard petugas */
+
+    /* Awal styling halaman dashboard daftar pasien */
+    #body .dash-info .table{margin-top:60px}
+
+    #body .dash-info .table .form-pencarian-1{
+        display: block;
+        border: 1px solid #3B4148;
+        border-radius: 10px;
+        padding:5px;
+        height: 100px;
+        margin-top: 30px;
+    }
+
+    #body .dash-info .table input select{
+        border: 1px solid #3B4148;
+        border-radius: 5px;
+    }
+
+    #body .table h5{
+        color: #3B4148;
+        letter-spacing: 1px;
+        font-weight: bold;
+    }
+
+    #body .dash-info .daftar-pencarian-1{
+        display: block;
+        border: 1px solid #3B4148;
+        border-radius: 10px;
+        margin-top: 15px;
+    }
+
+    #body .table .aksi{
+        border-radius: 100%;
+        width: 35px;
+        height: 35px;
+        padding:2px;
+        background-color: #3B4148;
+    }
+
+    #body .pencarianMobile{display: none;}
+
+    #body .table .lihat-pencarian{
+        margin-bottom: 25px;
+        margin-top: 15px;
+        background-color: #3B4148;
+        border-radius: 5px;
+        color: #ffffff;
+    }
+
+    #body .table .form-pencarian-2{
+        display: none;
+        border: 1px solid #3B4148;
+        border-radius: 10px;
+        padding:17px;
+        height: 75%;
+        margin-top: 30px;
+        margin-bottom: 25px;
+    }
+
+    #body .table .form-pencarian-2 .cari-pasien-2{
+        background-color: #3B4148;
+        border-radius: 5px;
+        color: #ffffff;
+    }
+
+    .info-aksi .btn-aksi-mobile{
+        width: 34px;
+        height:34px;
+        border-radius: 100%;
+        padding:1px;
+    }
+
+    .info-aksi .lihat-rm-mobile{
+        background-color: #00CACD;
+        margin-left:10px
+    }
+    /* Akhir styling halaman dashboard daftar pasien */
 }
 
 /* XX-Large devices (larger desktops, 1400px and up) */
@@ -956,11 +1846,11 @@
         border-radius: 10px;
         border: 1px solid #ffffff;
         box-shadow: 7px 7px 35px rgba(59, 65, 75, 0.3);
-        width: 75%;
+        /* width: 75%; */
         margin-top: 1rem;
         position: relative;
-        right: -5rem;
-        margin-bottom: 4rem;
+        /* right: -5rem; */
+        /* margin-bottom: 4rem; */
     }
     
     .wrapper{ margin:10px; }
@@ -1092,4 +1982,185 @@
     }
 
     /* Akhir styling halaman login petugas */
+
+    /* Awal styling halaman dashboard petugas */
+    #body .sidebar{
+        background-color: #0C96C5;
+        height: 100%;
+        position: fixed;
+        width: 0;
+        transition: 0.5s;
+        z-index: 1; /* Stay on top */
+        top: 0;
+        left: 0;
+        overflow-y: scroll;
+    }
+
+    #body .navigation{
+        padding: 20px 0;
+        display: none;
+        transition: 0.2s;
+    }
+
+    #body .navigation ul li a{
+        color: #ffffff;
+        margin-top: 15px;
+    }
+
+    #body .navigation img{
+        width: 30px;
+        height: 30px;
+        margin-right: 16px;
+    }
+
+    #body .navigation .logout{
+        position: relative;
+        bottom: -5rem;
+    }
+
+    #body .dash-info{margin-top:25px}
+
+    #body .dash-title .show-bar{
+        margin-left: -16px;
+        margin-bottom: 16px;
+    }
+
+    #body .dash-title h5{
+        color: #00CACD;
+        letter-spacing: 1px;
+    }
+
+    #body .dash-title h4{
+        color: #3B4148;
+        letter-spacing: 1px;
+        font-weight: bold;
+    }
+
+    #body .dash-info .overview .card{
+        margin-top: 40px;
+        width: 100%;
+    }
+
+    #body .dash-info .overview .overview-icon span{
+        position:absolute;
+        margin:10px;
+    }
+
+    #body .dash-info .overview .overview-icon{
+        background-color: #ffffff;
+        width: 48px;
+        height: 48px;
+        border-radius:15px;
+        box-shadow: 2px 2px 20px rgba(59, 65, 75, 0.3);
+        margin-bottom: 35px;
+        position: relative;
+    }
+
+    #body .graph{
+        margin-top: 70px;
+        margin-bottom: 30px;
+    }
+
+    #body .graph h5{
+        color: #3B4148;
+        letter-spacing: 1px;
+        font-weight: bold;
+    }
+
+    #body .graph #grafikPenyakit{
+        width: 100%;
+        height: auto;
+        margin-top:15px;
+    }
+
+    #body .graph #jml-kecamatan{
+        width: 100%;
+        height: auto;
+        margin-top:15px;
+    }
+
+    #body .graph #jenis-pekerjaan{
+        width: 100%;
+        height: auto;
+        margin-top:15px;
+    }
+
+    /* Akhir styling halaman dashboard petugas */
+
+    /* Awal styling halaman dashboard daftar pasien */
+    #body .dash-info .table{margin-top:60px}
+
+    #body .dash-info .table .form-pencarian-1{
+        display: block;
+        border: 1px solid #3B4148;
+        border-radius: 10px;
+        padding:5px;
+        height: 100px;
+        margin-top: 30px;
+    }
+
+    #body .dash-info .table input select{
+        border: 1px solid #3B4148;
+        border-radius: 5px;
+    }
+
+    #body .table h5{
+        color: #3B4148;
+        letter-spacing: 1px;
+        font-weight: bold;
+    }
+
+    #body .dash-info .daftar-pencarian-1{
+        display: block;
+        border: 1px solid #3B4148;
+        border-radius: 10px;
+        margin-top: 15px;
+    }
+
+    #body .table .aksi{
+        border-radius: 100%;
+        width: 35px;
+        height: 35px;
+        padding:2px;
+        background-color: #3B4148;
+    }
+
+    #body .pencarianMobile{display: none;}
+
+    #body .table .lihat-pencarian{
+        margin-bottom: 25px;
+        margin-top: 15px;
+        background-color: #3B4148;
+        border-radius: 5px;
+        color: #ffffff;
+    }
+
+    #body .table .form-pencarian-2{
+        display: none;
+        border: 1px solid #3B4148;
+        border-radius: 10px;
+        padding:17px;
+        height: 75%;
+        margin-top: 30px;
+        margin-bottom: 25px;
+    }
+
+    #body .table .form-pencarian-2 .cari-pasien-2{
+        background-color: #3B4148;
+        border-radius: 5px;
+        color: #ffffff;
+    }
+
+    .info-aksi .btn-aksi-mobile{
+        width: 34px;
+        height:34px;
+        border-radius: 100%;
+        padding:1px;
+    }
+
+    .info-aksi .lihat-rm-mobile{
+        background-color: #00CACD;
+        margin-left:10px
+    }
+    /* Akhir styling halaman dashboard daftar pasien */
 }

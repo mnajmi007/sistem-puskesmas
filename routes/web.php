@@ -25,6 +25,14 @@ Route::get('/login-petugas', function(){
     return view('loginPetugas');
 });
 
-Route::get('/dashboard-petugas', function(){
+Route::get('/dashboard', function(){
     return view('dashPetugas');
+});
+
+Route::get('/dashboard/pasien', function(){
+    return view('dashPasien');
+});
+
+Route::get('/dashboard/kunjungan', function(){
+    return view('dashKunjungan');
 });

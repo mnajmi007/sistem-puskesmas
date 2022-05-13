@@ -1,0 +1,7 @@
+<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+    @include('include.dashboard-petugas.dashTitle')
+</div>
+<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+    @include('include.dashboard-petugas.overview')
+    @include('include.dashboard-petugas.graph')
+</div>

@@ -17,7 +17,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="/dashboard/kunjungan" class="nav-link">
                     <img src="{{ asset('assets/images/visit.png') }}">
                     Kunjungan
                 </a>
