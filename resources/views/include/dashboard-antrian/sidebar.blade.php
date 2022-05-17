@@ -1,5 +1,5 @@
 <div class="sidebar" id="sidebar">
-    <div class="navigation" >
+    <div class="navigation">
         <ul class="nav flex-column">
             <li class="nav-item">
                 <h4><b><a href="#" class="nav-link">PUSKESMAS</a></b></h4>
@@ -23,7 +23,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="/dashboard/antrian" class="nav-link">
+                <a href="/dashboard/antrian" class="nav-link nav-active">
                     <img src="{{ asset('assets/images/antrian.png') }}">
                     Antrian
                 </a>

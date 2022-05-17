@@ -36,3 +36,27 @@ Route::get('/dashboard/pasien', function(){
 Route::get('/dashboard/kunjungan', function(){
     return view('dashKunjungan');
 });
+
+Route::get('/dashboard/antrian', function(){
+    return view('dashAntrian');
+});
+
+Route::get('/dashboard/poli-gigi', function(){
+    return view('dashGigi');
+});
+
+Route::get('/dashboard/kia', function(){
+    return view('dashKIA');
+});
+
+Route::get('/dashboard/mtbs', function(){
+    return view('dashMTBS');
+});
+
+Route::get('/dashboard/rekam-medis', function(){
+    return view('dashRM');
+});
+
+Route::get('/dashboard/tambah-pasien', function(){
+    return view('dashTambah');
+});

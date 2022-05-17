@@ -1,11 +1,11 @@
 <div class="sidebar" id="sidebar">
-    <div class="navigation" >
+    <div class="navigation">
         <ul class="nav flex-column">
             <li class="nav-item">
                 <h4><b><a href="#" class="nav-link">PUSKESMAS</a></b></h4>
             </li>
             <li class="nav-item">
-                <a href="/dashboard" class="nav-link nav-active">
+                <a href="/dashboard#" class="nav-link nav-active">
                     <img src="{{ asset('assets/images/dashboard.png') }}">
                     Dashboard
                 </a>
@@ -35,7 +35,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="/dashboard/kia" class="nav-link">
+                <a href="/dashboard/kia" class="nav-link nav-active">
                     <img src="{{ asset('assets/images/kia.png') }}">
                     KIA
                 </a>

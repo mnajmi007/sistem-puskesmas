@@ -245,4 +245,102 @@ $(function(){
         $("#form-pencarian-2").hide();
         return false;
     });
+
+    // Tambah Pasien
+    $("#next-form").prop("disabled", true);
+    $("#tambah-pasien").prop("disabled", true);
+
+    // Submit data goes here!!!
+    $("#nama, #tgl-lahir, #pekerjaan, #jns-kelamin, #goldar").change(function(){
+        var nama = $("#nama").val();
+        var tgl = $("#tgl-lahir").val();
+        var pekerjaan = $("#pekerjaan").val();
+        var gender = $("#jns-kelamin").val(); 
+        var goldar = $("#goldar").val();
+
+        if(nama != '' && tgl != '' && pekerjaan != 0 && gender != 0 && goldar != 0){
+            $("#next-form").prop("disabled", false);
+        }
+        else{
+            $("#next-form").prop("disabled", true);
+        }
+    });
+
+    $("#telp-pasien, #nmr-ktp, #alamat-pasien, #kelurahan, #rt-pasien, #rw-pasien").change(function(){
+        var telp = $("#telp-pasien").val();
+        var ktp = $("#nmr-ktp").val();
+        var alamat = $("#alamat-pasien").val();
+        var kelurahan = $("#kelurahan").val(); 
+        var rt = $("#rt-pasien").val();
+        var rw = $("#rw-pasien").val();
+
+        if(telp != '' && ktp != '' && alamat != '' && kelurahan != 0 && rt != 0 && rw != 0){
+            $("#tambah-pasien").prop("disabled", false);
+        }
+        else{
+            $("#tambah-pasien").prop("disabled", true);
+        }
+    });
+
+    $("#next-form").click(function(){
+        var nama = $("#nama").val();
+        var tgl = $("#tgl-lahir").val();
+        var pekerjaan = $("#pekerjaan").val();
+        var gender = $("#jns-kelamin").val(); 
+        var goldar = $("#goldar").val();
+
+        $("#nama-pasien").html("<b>"+nama+"</b>");
+        $("#lahir-pasien").html("<b>"+tgl+"</b>");
+        $("#pekerjaan-pasien").html("<b>"+pekerjaan+"</b>");
+        $("#gender-pasien").html("<b>"+gender+"</b>");
+        $("#goldar-pasien").html("<b>"+goldar+"</b>");
+
+        $("#data-profil").css("display", "none");
+        $("#tempat-tinggal").css("display", "block");
+
+        return false
+    });
+
+    $("#sebelum").click(function(){
+        $("#data-profil").css("display", "block");
+        $("#tempat-tinggal").css("display", "none");
+    });
+
+    $("#tambah-pasien").click(function(){
+        var nama = $("#nama").val();
+        var tgl = $("#tgl-lahir").val();
+        var pekerjaan = $("#pekerjaan").val();
+        var gender = $("#jns-kelamin").val(); 
+        var goldar = $("#goldar").val();
+
+        var telp = $("#telp-pasien").val();
+        var ktp = $("#nmr-ktp").val();
+        var alamat = $("#alamat-pasien").val();
+        var kelurahan = $("#kelurahan").val(); 
+        var rt = $("#rt-pasien").val();
+        var rw = $("#rw-pasien").val();
+        
+        var data = {
+            'pasien': nama,
+            'lahir': tgl,
+            'pekerjaan':pekerjaan,
+            'gender':gender,
+            'goldar':goldar,
+            'telp': telp,
+            'ktp': ktp,
+            'alamat': alamat,
+            'kelurahan': kelurahan,
+            'rt': rt,
+            'rw': rw
+        }
+        console.log(data);
+
+        $("#alamat-pasien").html("<b>"+telp+"</b>");
+        $("#ktp-pasien").html("<b>"+ktp+"</b>");
+        $("#tlp-pasien").html("<b>"+telp+"</b>");
+        $("#kelurahan-pasien").html("<b>"+kelurahan+"</b>");
+        $("#rt-pasien").html("<b>"+rt+"</b>");
+        $("#rw-pasien").html("<b>"+rw+"</b>");
+    });
+
 });

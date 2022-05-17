@@ -28,7 +28,7 @@
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 <body id="body">
-    @include('include.dashboard-petugas.sidebar')
+    @include('include.dashboard-pasien.sidebar')
     <div class="container dash-info close-bar">
         <div class="row">
             @include('include.dashboard-pasien.content')

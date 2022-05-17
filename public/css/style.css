@@ -197,8 +197,13 @@
     overflow-y: hidden;
 }
 
-#body .navigation{
-    padding: 20px 0;
+#body .sidebar .nav-active{
+    background-color: #19A6D6;
+    border-radius:5px;
+}
+
+#body .sidebar .navigation{
+    padding: 10px;
     display: none;
     transition: 0.2s;
 }
@@ -206,6 +211,12 @@
 #body .navigation ul li a{
     color: #ffffff;
     margin-top: 15px;
+}
+
+#body .navigation ul li a:hover{
+    color: #ffffff;
+    background-color: #19A6D6;
+    border-radius:5px;
 }
 
 #body .navigation img{
@@ -366,6 +377,40 @@
 }
 
 /* Akhir styling halaman dashboard daftar pasien */
+
+/* Awal styling halaman tambah pasien */
+#body .tmbh-pasien{margin-top:3rem;}
+#body .tmbh-pasien .btn-back{
+    background-color: #19A6D6;
+    border: 1px solid #19A6D6;
+    color: #ffffff;
+    height: 36px;
+    width: 36px;
+    border-radius: 10px;
+    padding: 5px;
+    margin-right: 16px;
+}
+
+#body .info-pasien .card{
+    display: none;
+    background-color: #0C96C5;
+    color: #ffffff;
+    margin-top: 6rem;
+    box-shadow: 7px 7px 35px rgba(12, 150, 197, 0.5);
+}
+
+#body .info-pasien .card h4{
+    color: #ffffff;
+    margin-bottom: 15px;
+}
+
+#body .info-pasien .info{margin-top: 20px;}
+
+#body .info-pasien .dashed{
+    border-top: 2px dashed #ffffff;
+    margin-top:40px;
+}
+/* Akhir styling halaman tambah pasien */
 
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
@@ -538,8 +583,13 @@
         overflow-y: scroll;
     }
 
-    #body .navigation{
-        padding: 20px 0;
+    #body .sidebar .nav-active{
+        background-color: #19A6D6;
+        border-radius:5px;
+    }
+
+    #body .sidebar .navigation{
+        padding: 10px;
         display: none;
         transition: 0.2s;
     }
@@ -547,6 +597,12 @@
     #body .navigation ul li a{
         color: #ffffff;
         margin-top: 15px;
+    }
+
+    #body .navigation ul li a:hover{
+        color: #ffffff;
+        background-color: #19A6D6;
+        border-radius:5px;
     }
 
     #body .navigation img{
@@ -711,6 +767,40 @@
     }
 
     /* Akhir styling halaman dashboard daftar pasien */
+
+    /* Awal styling halaman tambah pasien */
+    #body .tmbh-pasien{margin-top:3rem;}
+    #body .tmbh-pasien .btn-back{
+        background-color: #19A6D6;
+        border: 1px solid #19A6D6;
+        color: #ffffff;
+        height: 36px;
+        width: 36px;
+        border-radius: 10px;
+        padding: 5px;
+        margin-right: 16px;
+    }
+
+    #body .info-pasien .card{
+        display: none;
+        background-color: #0C96C5;
+        color: #ffffff;
+        margin-top: 6rem;
+        box-shadow: 7px 7px 35px rgba(12, 150, 197, 0.5);
+    }
+
+    #body .info-pasien .card h4{
+        color: #ffffff;
+        margin-bottom: 15px;
+    }
+
+    #body .info-pasien .info{margin-top: 20px;}
+
+    #body .info-pasien .dashed{
+        border-top: 2px dashed #ffffff;
+        margin-top:40px;
+    }
+    /* Akhir styling halaman tambah pasien */
 }
 
 /* Medium devices (tablets, 768px and up) */
@@ -884,8 +974,13 @@
         overflow-y: scroll;
     }
 
-    #body .navigation{
-        padding: 20px 0;
+    #body .sidebar .nav-active{
+        background-color: #19A6D6;
+        border-radius:5px;
+    }
+
+    #body .sidebar .navigation{
+        padding: 10px;
         display: none;
         transition: 0.2s;
     }
@@ -893,6 +988,12 @@
     #body .navigation ul li a{
         color: #ffffff;
         margin-top: 15px;
+    }
+
+    #body .navigation ul li a:hover{
+        color: #ffffff;
+        background-color: #19A6D6;
+        border-radius:5px;
     }
 
     #body .navigation img{
@@ -1057,6 +1158,40 @@
     }
 
     /* Akhir styling halaman dashboard daftar pasien */
+
+    /* Awal styling halaman tambah pasien */
+    #body .tmbh-pasien{margin-top:2rem;}
+    #body .tmbh-pasien .btn-back{
+        background-color: #19A6D6;
+        border: 1px solid #19A6D6;
+        color: #ffffff;
+        height: 36px;
+        width: 36px;
+        border-radius: 10px;
+        padding: 5px;
+        margin-right: 16px;
+    }
+
+    #body .info-pasien .card{
+        display: block;
+        background-color: #0C96C5;
+        color: #ffffff;
+        margin-top: 6rem;
+        box-shadow: 7px 7px 35px rgba(12, 150, 197, 0.5);
+    }
+
+    #body .info-pasien .card h4{
+        color: #ffffff;
+        margin-bottom: 15px;
+    }
+
+    #body .info-pasien .info{margin-top: 20px;}
+
+    #body .info-pasien .dashed{
+        border-top: 2px dashed #ffffff;
+        margin-top:40px;
+    }
+    /* Akhir styling halaman tambah pasien */
 }
 
 /* Large devices (desktops, 992px and up) */
@@ -1257,8 +1392,13 @@
         overflow-y: scroll;
     }
 
-    #body .navigation{
-        padding: 20px 0;
+    #body .sidebar .nav-active{
+        background-color: #19A6D6;
+        border-radius:5px;
+    }
+
+    #body .sidebar .navigation{
+        padding: 10px;
         display: none;
         transition: 0.2s;
     }
@@ -1266,6 +1406,12 @@
     #body .navigation ul li a{
         color: #ffffff;
         margin-top: 15px;
+    }
+
+    #body .navigation ul li a:hover{
+        color: #ffffff;
+        background-color: #19A6D6;
+        border-radius:5px;
     }
 
     #body .navigation img{
@@ -1424,6 +1570,40 @@
         margin-left:10px
     }
     /* Akhir styling halaman dashboard daftar pasien */
+
+    /* Awal styling halaman tambah pasien */
+    #body .tmbh-pasien{margin-top:2rem;}
+    #body .tmbh-pasien .btn-back{
+        background-color: #19A6D6;
+        border: 1px solid #19A6D6;
+        color: #ffffff;
+        height: 36px;
+        width: 36px;
+        border-radius: 10px;
+        padding: 5px;
+        margin-right: 16px;
+    }
+
+    #body .info-pasien .card{
+        display: block;
+        background-color: #0C96C5;
+        color: #ffffff;
+        margin-top: 6rem;
+        box-shadow: 7px 7px 35px rgba(12, 150, 197, 0.5);
+    }
+
+    #body .info-pasien .card h4{
+        color: #ffffff;
+        margin-bottom: 15px;
+    }
+
+    #body .info-pasien .info{margin-top: 20px;}
+
+    #body .info-pasien .dashed{
+        border-top: 2px dashed #ffffff;
+        margin-top:40px;
+    }
+    /* Akhir styling halaman tambah pasien */
 }
 
 /* X-Large devices (large desktops, 1200px and up) */
@@ -1622,9 +1802,14 @@
         left: 0;
         overflow-y: scroll;
     }
+    
+    #body .sidebar .nav-active{
+        background-color: #19A6D6;
+        border-radius:5px;
+    }
 
-    #body .navigation{
-        padding: 20px 0;
+    #body .sidebar .navigation{
+        padding: 10px;
         display: none;
         transition: 0.2s;
     }
@@ -1632,6 +1817,12 @@
     #body .navigation ul li a{
         color: #ffffff;
         margin-top: 15px;
+    }
+
+    #body .navigation ul li a:hover{
+        color: #ffffff;
+        background-color: #19A6D6;
+        border-radius:5px;
     }
 
     #body .navigation img{
@@ -1790,6 +1981,40 @@
         margin-left:10px
     }
     /* Akhir styling halaman dashboard daftar pasien */
+
+    /* Awal styling halaman tambah pasien */
+    #body .tmbh-pasien{margin-top:2rem;}
+    #body .tmbh-pasien .btn-back{
+        background-color: #19A6D6;
+        border: 1px solid #19A6D6;
+        color: #ffffff;
+        height: 36px;
+        width: 36px;
+        border-radius: 10px;
+        padding: 5px;
+        margin-right: 16px;
+    }
+
+    #body .info-pasien .card{
+        display: block;
+        background-color: #0C96C5;
+        color: #ffffff;
+        margin-top: 6rem;
+        box-shadow: 7px 7px 35px rgba(12, 150, 197, 0.5);
+    }
+
+    #body .info-pasien .card h4{
+        color: #ffffff;
+        margin-bottom: 15px;
+    }
+
+    #body .info-pasien .info{margin-top: 20px;}
+
+    #body .info-pasien .dashed{
+        border-top: 2px dashed #ffffff;
+        margin-top:40px;
+    }
+    /* Akhir styling halaman tambah pasien */
 }
 
 /* XX-Large devices (larger desktops, 1400px and up) */
@@ -1996,8 +2221,13 @@
         overflow-y: scroll;
     }
 
-    #body .navigation{
-        padding: 20px 0;
+    #body .sidebar .nav-active{
+        background-color: #19A6D6;
+        border-radius:5px;
+    }
+    
+    #body .sidebar .navigation{
+        padding: 10px;
         display: none;
         transition: 0.2s;
     }
@@ -2005,6 +2235,12 @@
     #body .navigation ul li a{
         color: #ffffff;
         margin-top: 15px;
+    }
+
+    #body .navigation ul li a:hover{
+        color: #ffffff;
+        background-color: #19A6D6;
+        border-radius:5px;
     }
 
     #body .navigation img{
@@ -2163,4 +2399,38 @@
         margin-left:10px
     }
     /* Akhir styling halaman dashboard daftar pasien */
+
+    /* Awal styling halaman tambah pasien */
+    #body .tmbh-pasien{margin-top:2rem;}
+    #body .tmbh-pasien .btn-back{
+        background-color: #19A6D6;
+        border: 1px solid #19A6D6;
+        color: #ffffff;
+        height: 36px;
+        width: 36px;
+        border-radius: 10px;
+        padding: 5px;
+        margin-right: 16px;
+    }
+
+    #body .info-pasien .card{
+        display: block;
+        background-color: #0C96C5;
+        color: #ffffff;
+        margin-top: 6rem;
+        box-shadow: 7px 7px 35px rgba(12, 150, 197, 0.5);
+    }
+
+    #body .info-pasien .card h4{
+        color: #ffffff;
+        margin-bottom: 15px;
+    }
+
+    #body .info-pasien .info{margin-top: 20px;}
+
+    #body .info-pasien .dashed{
+        border-top: 2px dashed #ffffff;
+        margin-top:40px;
+    }
+    /* Akhir styling halaman tambah pasien */
 }
