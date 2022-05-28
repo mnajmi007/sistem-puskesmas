@@ -26,14 +26,14 @@ $(function(){
 
     // Mengisi kolom nama pasien dan
     // kolom nomor ktp pasien
-    $("#nama, #ktp").keyup(function(){
+    $("#nama, #telp").keyup(function(){
         var nama = $("#nama").val();
-        var ktp = $("#ktp").val();
+        var telp = $("#telp").val();
 
         // Jika nama dan ktp terisi
         // maka mengkatifkan tombol 'selanjutnya'
         // pada form pasien baru
-        if(nama != '' && ktp != '') {
+        if(nama != '' && telp != '') {
             $("#next").prop("disabled", false);
         }
         else{
@@ -43,11 +43,11 @@ $(function(){
 
     $("#next").click(function() {
         var nama = $("#nama").val();
-        var ktp = $("#ktp").val();
         var tgl = $("#tglLahir").val();
+        var telp = $("#telp").val();
 
-        if(tgl == ''){
-            $("#notif-kosong").html('<span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-1-5h2v2h-2v-2zm0-8h2v6h-2V7z" fill="rgba(255,0,0,1)"/></svg> Tidak boleh kosong!</span>');
+        if(tgl == '' || nama == '' || telp == ''){
+            alert("Kolom harus diisi!");
         }
         else{
             // Menampilkan dan menyembunyikan form 
@@ -59,6 +59,51 @@ $(function(){
             $("#form-satu").removeClass("active");
             $("#form-dua").removeClass("disabled");
         }
+        return false;
+    });
+
+    // Pendaftaran Pasien Baru
+    $("#daftar").click(function(){
+        var nama = $("#nama").val();
+        var tgl = $("#tglLahir").val();
+        var telp = $("#telp").val();
+
+        var alamat = $("#alamat").val();
+        var poli = $("#poli").val();
+        var periksa = $("#tglPeriksa").val();
+
+        var data = {
+            'nama':nama,
+            'tanggal':tgl,
+            'telp':telp,
+            'alamat':alamat,
+            'poli':poli,
+            'periksa':periksa
+        }
+        
+        $.ajax({
+            type:"POST",
+            url:"/pasien-baru",
+            data:data,
+            headers:{
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success:function(data){
+                if(data == "Pendaftaran online berhasil!"){
+                    $("#bukti-nama").html(nama);
+                    $("#bukti-telp").html(telp);
+                    $("#bukti-lahir").html(tgl);
+                    $("#bukti-alamat").html(alamat);
+                    $("#bukti-poli").html(poli);
+                    $("#bukti-periksa").html(periksa);
+                    $("#modal-bukti").modal("show");
+                }
+                else{
+                    alert("Pendaftaran online gagal!");
+                }
+            }
+        });
+        
         return false;
     });
 
@@ -108,9 +153,24 @@ $(function(){
     // Jika klik button pasien lama
     // Class aktif dihapus dari button pasien baru
     // Dan ditambahkan ke button pasien lama
+
+    $("#pasien-baru").click(function(){
+        $("#pasien-lama").removeClass("active");
+        $("#pasien-baru").addClass("active");
+
+        $("#form-lama").css("display", "none");
+        $("#form-baru").css("display", "block");
+
+        return false;
+    });
+
     $("#pasien-lama").click(function(){
         $("#pasien-lama").addClass("active");
         $("#pasien-baru").removeClass("active");
+
+        $("#form-lama").css("display", "block");
+        $("#form-baru").css("display", "none");
+
         return false;
     });
 
@@ -126,14 +186,14 @@ $(function(){
         return false;
     });
 
-    $("#pasienLama, #nmrPasien").keyup(function() {
+    $("#pasienLama, #rmPasien").keyup(function() {
         var pasienLama = $("#pasienLama").val();
-        var nmrPasien = $("#nmrPasien").val();
+        var rmPasien = $("#rmPasien").val();
 
         // Jika nama dan nomor pasien terisi
         // maka mengkatifkan tombol 'selanjutnya'
         // pada form pasien lama
-        if(pasienLama != '' && nmrPasien != '') {
+        if(pasienLama != '' && rmPasien != '') {
             $("#next-lama").prop("disabled", false);
         }
         else{
@@ -143,7 +203,7 @@ $(function(){
     });
 
     $("#next-lama").click(function() {
-        var poli = $("#poli").val();
+        var poli = $("#poliLama").val();
 
         if(poli == "Pilih"){
             $(".notif-poli").html('<span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-1-5h2v2h-2v-2zm0-8h2v6h-2V7z" fill="rgba(255,0,0,1)"/></svg> Tidak boleh kosong!</span>');
@@ -172,19 +232,42 @@ $(function(){
     });
 
     $("#dp-lama").click(function() {
-        var pasienLama = $("#pasienLama").val();
-        var nmrPasien = $("#nmrPasien").val();
-        var poli = $("#poli").val();
+        var nama = $("#pasienLama").val();
+        var rm = $("#rmPasien").val();
+        var poli = $("#poliLama").val();
         var bpjs = $("#bpjs").val();
-        var tglPeriksa = $("#tglPeriksa").val();
+        var tglPeriksa = $("#tglPeriksaLama").val();
+
         var data = {
-            'nama': pasienLama,
-            'ktp': nmrPasien,
+            'nama': nama,
+            'rm': rm,
             'poli': poli,
             'bpjs': bpjs,
             'tanggal': tglPeriksa
-        }
-        console.log(data);
+        };
+
+        $.ajax({
+            type:"POST",
+            url:"/pasien-lama",
+            data:data,
+            headers:{
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success:function(data){
+                if(data == "Berhasil!"){
+                    $("#modal-bukti-lama").modal("show");
+                    $("#bukti-pasien-lama").html("<b>"+nama+"</b>");
+                    $("#bukti-rm").html("<b>"+rm+"</b>");
+                    $("#bukti-jkn").html("<b>"+bpjs+"</b>");
+                    $("#bukti-periksa-lama").html("<b>"+tglPeriksa+"</b>");
+                    $("#bukti-poli-lama").html("<b>"+poli+"</b>");
+                }
+                else{
+                    alert(data);
+                }
+            }
+        });
+
         return false;
     });
 
@@ -246,11 +329,23 @@ $(function(){
         return false;
     });
 
+    $(".aksi").click(function(){
+        var ID = $(this).attr("id");
+        $("#menu-aksi"+ID).modal("show");
+        return false;
+    });
+
+
+    $(".close-aksi").click(function(){
+        var ID = $(this).attr("id");
+        $("#menu-aksi"+ID).modal("hide");
+        return false;
+    });
+
     // Tambah Pasien
     $("#next-form").prop("disabled", true);
     $("#tambah-pasien").prop("disabled", true);
 
-    // Submit data goes here!!!
     $("#nama, #tgl-lahir, #pekerjaan, #jns-kelamin, #goldar").change(function(){
         var nama = $("#nama").val();
         var tgl = $("#tgl-lahir").val();
@@ -306,6 +401,7 @@ $(function(){
         $("#tempat-tinggal").css("display", "none");
     });
 
+    // Submit tambah pasien goes here!!!
     $("#tambah-pasien").click(function(){
         var nama = $("#nama").val();
         var tgl = $("#tgl-lahir").val();
@@ -343,4 +439,109 @@ $(function(){
         $("#rw-pasien").html("<b>"+rw+"</b>");
     });
 
+    // Update data pasien
+    $("#next-update").click(function(){
+        var nama = $("#nama").val();
+        var tgl = $("#tgl-lahir").val();
+        var pekerjaan = $("#pekerjaan").val();
+        var gender = $("#jns-kelamin").val(); 
+        var goldar = $("#goldar").val();
+
+        if(nama === '' || tgl === '' || pekerjaan === 0 || gender === 0 || goldar === 0){
+            alert("Kolom tidak boleh kosong!");
+        }
+        else{
+            $("#nama-pasien").html("<b>"+nama+"</b>");
+            $("#lahir-pasien").html("<b>"+tgl+"</b>");
+            $("#pekerjaan-pasien").html("<b>"+pekerjaan+"</b>");
+            $("#gender-pasien").html("<b>"+gender+"</b>");
+            $("#goldar-pasien").html("<b>"+goldar+"</b>");
+
+            $("#data-profil").css("display", "none");
+            $("#tempat-tinggal").css("display", "block");
+        }
+        return false
+    });
+
+    $(".update-pasien").click(function(){
+        var rm = $(this).attr("id");
+        var nama = $("#nama").val();
+        var tgl = $("#tgl-lahir").val();
+        var pekerjaan = $("#pekerjaan").val();
+        var gender = $("#jns-kelamin").val(); 
+        var goldar = $("#goldar").val();
+
+        var telp = $("#telp-pasien").val();
+        var ktp = $("#nmr-ktp").val();
+        var alamat = $("#alamat").val();
+        var kelurahan = $("#kelurahan").val(); 
+        var rt = $("#rt").val();
+        var rw = $("#rw").val();
+        
+        var data = {
+            'pasien': nama,
+            'lahir': tgl,
+            'pekerjaan':pekerjaan,
+            'gender':gender,
+            'goldar':goldar,
+            'telp': telp,
+            'ktp': ktp,
+            'alamat': alamat,
+            'kelurahan': kelurahan,
+            'rt': rt,
+            'rw': rw,
+            'rm': rm
+        }
+
+        if(nama === '' || tgl === '' || pekerjaan === 0 || gender === 0 || goldar === 0 || telp === '' || ktp === '' || alamat === '' || kelurahan === 0 || rt === 0 || rw === 0){
+            alert("Kolom tidak boleh kosong!");
+        }
+        else{
+            $.ajax({
+                type:"POST",
+                url:"/handle-edit",
+                data:data,
+                headers:{
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success:function(data){
+                    $("#alamat-pasien").html("<b>"+alamat+"</b>");
+                    $("#ktp-pasien").html("<b>"+ktp+"</b>");
+                    $("#tlp-pasien").html("<b>"+telp+"</b>");
+                    $("#kelurahan-pasien").html("<b>"+kelurahan+"</b>");
+                    $("#rt-pasien").html("<b>"+rt+"</b>");
+                    $("#rw-pasien").html("<b>"+rw+"</b>");
+
+                    if(data == "error"){
+                        alert("Data gagal diperbarui!");
+                    }
+                    else{
+                        alert("Data Berhasil diperbarui!");
+                        window.setTimeout(window.location.href='/dashboard/edit-pasien/'+data, 20000);
+                    }
+                }
+            });
+        }
+       return false;
+    });
+
+    // Link halaman edit pasien
+    $(".edit-pasien").click(function(){
+        var ID = $(this).attr("id");
+        var data = {
+            'id':ID
+        }
+        $.ajax({
+            type:'get',
+            url:'/dashboard/edit-pasien/'+ID,
+            data:data,
+            headers:{
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success:function(data){
+                window.location.href='/dashboard/edit-pasien/'+ID;
+            }
+        });
+        return false;
+    });
 });

@@ -52,12 +52,16 @@
     border: 1px solid #ffffff;
     box-shadow: 7px 7px 35px rgba(59, 65, 75, 0.3);
     width: 100%;
-    /* margin-top: 6rem; */
-    margin-top: 0px;
+    margin-top: 6rem;
     position: relative;
     right: 0px;
-    /* margin-bottom: 2rem; */
-    margin-bottom: 0px;
+    margin-bottom: 2rem;
+}
+
+#body .form-pendaftaran .card{
+    right: 0;
+    margin-bottom: 4rem;
+    width: 100%;
 }
 
 .wrapper{ margin:10px; }
@@ -71,6 +75,20 @@
     border-radius: 8px;
     border-color: #19A6D6;
     height: 40px;
+}
+
+#body .modal-bukti .modal-content{
+    background-color: #0C96C5;
+    color:#ffffff;
+}
+
+#body .modal-bukti .tipe-pasien{
+    background-color: #19A6D6;
+    width: 120px;
+    height: 30px;
+    border-radius:5px;
+    padding:2px;
+    margin-bottom:15px;
 }
 
 #body #form-baru{display: none;}
@@ -466,13 +484,17 @@
         border-radius: 10px;
         border: 1px solid #ffffff;
         box-shadow: 7px 7px 35px rgba(59, 65, 75, 0.3);
-        /* width: 75%; */
-        /* margin-top: 8rem; */
+        margin-top: 8rem;
         position: relative;
-        /* right: -5rem; */
         margin-bottom: 2rem;
     }
     
+    #body .form-pendaftaran .card{
+        right: 0;
+        margin-bottom: 4rem;
+        width: 100%;
+    }
+
     .wrapper{ margin:10px; }
     
     .button-group{ margin-top: 5px; }
@@ -485,7 +507,20 @@
         border-color: #19A6D6;
         height: 40px;
     }
-    
+    #body .modal-bukti .modal-content{
+        background-color: #0C96C5;
+        color:#ffffff;
+    }
+
+    #body .modal-bukti .tipe-pasien{
+        background-color: #19A6D6;
+        width: 120px;
+        height: 30px;
+        border-radius:5px;
+        padding:2px;
+        margin-bottom:15px;
+    }
+
     #body #form-baru{display: none;}
 
     .page{ margin: 25px 0px 25px 1.7rem}
@@ -864,6 +899,12 @@
         margin-bottom: 2rem;
     }
     
+    #body .form-pendaftaran .card{
+        right: -10rem;
+        margin-bottom: 4rem;
+        width: 60%;
+    }
+    
     .wrapper{ margin:10px; }
     
     .button-group{ margin-top: 5px; }
@@ -877,6 +918,20 @@
         height: 40px;
     }
     
+    #body .modal-bukti .modal-content{
+        background-color: #0C96C5;
+        color:#ffffff;
+    }
+
+    #body .modal-bukti .tipe-pasien{
+        background-color: #19A6D6;
+        width: 120px;
+        height: 30px;
+        border-radius:5px;
+        padding:2px;
+        margin-bottom:15px;
+    }
+
     #body #form-baru{display: none;}
 
     .page{ margin: 25px 0px 25px 1.7rem}
@@ -1248,13 +1303,17 @@
         border-radius: 10px;
         border: 1px solid #ffffff;
         box-shadow: 7px 7px 35px rgba(59, 65, 75, 0.3);
-        /* width: 75%; */
         margin-top: 1rem;
         position: relative;
-        /* right: -5rem; */
-       /* margin-bottom: 4rem; */
+       
     }
     
+    #body .form-pendaftaran .card{
+        right: -5rem;
+        margin-bottom: 4rem;
+        width: 75%;
+    }
+
     .wrapper{ margin:10px; }
     
     .button-group{ margin-top: 5px; }
@@ -1268,6 +1327,20 @@
         height: 40px;
     }
     
+    #body .modal-bukti .modal-content{
+        background-color: #0C96C5;
+        color:#ffffff;
+    }
+
+    #body .modal-bukti .tipe-pasien{
+        background-color: #19A6D6;
+        width: 120px;
+        height: 30px;
+        border-radius:5px;
+        padding:2px;
+        margin-bottom:15px;
+    }
+
     #body #form-baru{display: none;}
 
     .page{ margin: 25px 0px 25px 1.7rem}
@@ -1569,6 +1642,37 @@
         background-color: #00CACD;
         margin-left:10px
     }
+
+    #body .menu-aksi .modal-content{
+        background-color: #0C96C5;
+        border:1px solid #0C96C5;
+        border-radius: 10px;
+    }
+
+    #body .menu-aksi .pilihan{margin-top: 2rem;}
+
+    #body .menu-aksi .pilihan-aksi{
+        margin-bottom: 25px;
+        color: #ffffff;
+    }
+
+    #body .menu-aksi .pilihan-aksi a{
+        color: #ffffff;
+        font-size: 17px;
+    }
+
+    #body .menu-aksi .btn-modal{position:relative;}
+
+    #body .menu-aksi .close-modal{
+        background-color: #00CACD;
+        border-radius: 100%;
+        height: 50px;
+        width: 50px;
+        float: right;
+        position: absolute;
+        right:-2rem;
+        top:-2rem;
+    }
     /* Akhir styling halaman dashboard daftar pasien */
 
     /* Awal styling halaman tambah pasien */
@@ -1667,6 +1771,12 @@
         /* margin-bottom: 4rem; */
     }
     
+    #body .form-pendaftaran .card{
+        right: -5rem;
+        margin-bottom: 4rem;
+        width: 75%;
+    }
+
     .wrapper{ margin:10px; }
     
     .button-group{ margin-top: 5px; }
@@ -1678,6 +1788,20 @@
         border-radius: 8px;
         border-color: #19A6D6;
         height: 40px;
+    }
+
+    #body .modal-bukti .modal-content{
+        background-color: #0C96C5;
+        color:#ffffff;
+    }
+
+    #body .modal-bukti .tipe-pasien{
+        background-color: #19A6D6;
+        width: 120px;
+        height: 30px;
+        border-radius:5px;
+        padding:2px;
+        margin-bottom:15px;
     }
 
     #body #form-baru{display: none;}
@@ -2078,10 +2202,30 @@
         /* margin-bottom: 4rem; */
     }
     
+    #body .form-pendaftaran .card{
+        right: -5rem;
+        margin-bottom: 4rem;
+        width: 75%;
+    }
+
     .wrapper{ margin:10px; }
     
     .button-group{ margin-top: 5px; }
     
+    #body .modal-bukti .modal-content{
+        background-color: #0C96C5;
+        color:#ffffff;
+    }
+
+    #body .modal-bukti .tipe-pasien{
+        background-color: #19A6D6;
+        width: 120px;
+        height: 30px;
+        border-radius:5px;
+        padding:2px;
+        margin-bottom:15px;
+    }
+
     .button-group .btn-block{margin-top: 15px;}
     
     .button-group .btn-primary{

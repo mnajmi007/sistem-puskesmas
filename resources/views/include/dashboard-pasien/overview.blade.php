@@ -14,7 +14,7 @@
                         </span>
                     </div>
                     <h6><small>Pasien BPJS</small></h6>
-                    <h5>500 Pasien</h5>
+                    <h5><b>{{ $count_anggotaJKN }} Pasien</b></h5>
                 </div>
             </div>
         </div>
@@ -32,7 +32,7 @@
                         </span>
                     </div>
                     <h6><small>Pasien Non BPJS</small></h6>
-                    <h5>45 Antrian</h5>
+                    <h5><b>{{ $count_nonJKN }} Pasien</b></h5>
                 </div>
             </div>
         </div>
@@ -50,7 +50,7 @@
                         </span>
                     </div>
                     <h6><small>Pasien Baru</small></h6>
-                    <h5>50 pasien</h5>
+                    <h5><b>{{ $count_pasienBaru }} pasien</b></h5>
                 </div>
             </div>
         </div>
@@ -68,7 +68,7 @@
                         </span>
                     </div>
                     <h6><small>Pasien Lama</small></h6>
-                    <h5>450 Pasien</h5>
+                    <h5><b>{{ $count_pasienLama }} Pasien</b></h5>
                 </div>
             </div>
         </div>

@@ -5,16 +5,15 @@
     </div>
     <div class="form-group">
         <label>Nomor Pasien</label>
-        <input type="number" id="nmrPasien" class="form-control" placeholder="Masukkan nomor pasien...">
+        <input type="number" id="rmPasien" class="form-control" placeholder="Masukkan nomor pasien...">
     </div>
     <div class="form-group">
         <label>Poli Klinik</label>
-        <select id="poli" class="form-control">
+        <select id="poliLama" class="form-control">
             <option value="Pilih" selected>Pilih poli klinik...</option>
-            <option value="Poli Umum">Poli Umum</option>
-            <option value="Poli Gigi">Poli Gigi</option>
-            <option value="Poli Mata">Poli Mata</option>
-            <option value="KIA">KIA</option>
+            @foreach($poli as $p)
+                <option value="{{ $p->id_poli }}">{{ $p->nama_poli }}</option>
+            @endforeach
         </select>
         <div class="notif-poli" id="notif-kosong"></div>
     </div>
