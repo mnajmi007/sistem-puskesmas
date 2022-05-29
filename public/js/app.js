@@ -463,6 +463,19 @@ $(function(){
         return false
     });
 
+    // Form edit alamat domisili
+    $("#sebelum-domisili").click(function(){
+        $("#tempat-tinggal-domisili").css("display","none");
+        $("#tempat-tinggal").css("display","block");
+        return false;
+    });
+
+    $("#next-domisili").click(function(){
+        $("#tempat-tinggal-domisili").css("display","block");
+        $("#tempat-tinggal").css("display","none");
+        return false;
+    });
+
     $(".update-pasien").click(function(){
         var rm = $(this).attr("id");
         var nama = $("#nama").val();
@@ -478,6 +491,10 @@ $(function(){
         var rt = $("#rt").val();
         var rw = $("#rw").val();
         
+        var alamat_domisili = $("#alamat_domisili").val();
+        var rt_domisili = $("#rt_domisili").val();
+        var rw_domisili = $("#rw_domisili").val();
+
         var data = {
             'pasien': nama,
             'lahir': tgl,
@@ -490,7 +507,10 @@ $(function(){
             'kelurahan': kelurahan,
             'rt': rt,
             'rw': rw,
-            'rm': rm
+            'rm': rm,
+            'alamat_domisili': alamat_domisili,
+            'rt_domisili': rt_domisili,
+            'rw_domisili': rw_domisili
         }
 
         if(nama === '' || tgl === '' || pekerjaan === 0 || gender === 0 || goldar === 0 || telp === '' || ktp === '' || alamat === '' || kelurahan === 0 || rt === 0 || rw === 0){
@@ -517,7 +537,7 @@ $(function(){
                     }
                     else{
                         alert("Data Berhasil diperbarui!");
-                        window.setTimeout(window.location.href='/dashboard/edit-pasien/'+data, 20000);
+                        window.setTimeout(window.location.href='/dashboard/edit-pasien/'+data, 7000);
                     }
                 }
             });
@@ -542,6 +562,105 @@ $(function(){
                 window.location.href='/dashboard/edit-pasien/'+ID;
             }
         });
+        return false;
+    });
+
+    // Link halaman hasil pencarian
+    $("#cari-pasien").prop("disabled", true);
+
+    $("#cari-nama, #cari-rm, #cari-ktp, #cari-jkn").change(function(){
+        var nama = $("#cari-nama").val();
+        var rm = $("#cari-rm").val();
+        var ktp = $("#cari-ktp").val();
+        var jkn = $("#cari-jkn").val();
+
+        if(nama != '' && rm != '' && ktp != '' && jkn != 0){
+            $("#cari-pasien").prop("disabled", false);
+        }
+        else{
+            $("#cari-pasien").prop("disabled", true);
+        }
+
+        return false;
+    });
+
+    $("#cari-pasien").click(function(){
+        var nama = $("#cari-nama").val();
+        var rm = $("#cari-rm").val();
+        var ktp = $("#cari-ktp").val();
+        var pekerjaan = $("#cari-pekerjaan").val();
+        var data = {
+            'nama':nama,
+            'rm':rm,
+            'ktp':ktp,
+            'pekerjaan':pekerjaan
+        }
+
+        $.ajax({
+            type:'get',
+            url:'/dashboard/pasien/cari/'+rm,
+            data:data,
+            headers:{
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success:function(data){
+                window.location.href='/dashboard/pasien/cari/'+rm;
+            },
+            error:function(data){
+                alert("Pasien tidak ditemukan!");
+            }
+        });
+
+        return false;
+    });
+
+    // Link menuju halaman kunjungan pasien tertentu
+    $(".kunjungan-pasien").click(function(){
+        var rm = $(this).attr("id");
+        var data = {
+            'rm':rm
+        };
+
+        $.ajax({
+            type:'get',
+            url:'/dashboard/pasien/cari/kunjungan/'+rm,
+            data:data,
+            headers:{
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success:function(data){
+                window.location.href='/dashboard/pasien/cari/kunjungan/'+rm;
+            },
+            error:function(data){
+                alert("Pasien tidak ditemukan!");
+            }
+        });
+
+        return false;
+    });
+
+    // link menuju rekam medis pasien tertentu
+    $(".rm-pasien").click(function(){
+        var rm = $(this).attr("id");
+        var data = {
+            'rm':rm
+        };
+
+        $.ajax({
+            type:'get',
+            url:'/dashboard/pasien/cari/rm/'+rm,
+            data:data,
+            headers:{
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success:function(data){
+                window.location.href='/dashboard/pasien/cari/rm/'+rm;
+            },
+            error:function(data){
+                alert("Pasien tidak ditemukan!");
+            }
+        });
+
         return false;
     });
 });

@@ -85,7 +85,7 @@
                     <hr class="dashed">
 
                     <div class="tempat-tinggal">
-                        <h4 class="form-title">Informasi Profil Pasien</h4>
+                        <h4 class="form-title">Informasi Alamat Pasien</h4>
 
                         <div class="info info-alamat">
                             <div class="row">
@@ -132,7 +132,7 @@
                                     <span>Kelurahan</span>
                                 </div>
                                 <div class="col">
-                                    <span id="kelurahan-pasien"><b>Karangrejo</b></span>
+                                    <span id="kelurahan-pasien"><b>{{ $kelurahan }}</b></span>
                                 </div>
                             </div>
                         </div>
@@ -159,6 +159,52 @@
                                     </span>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+
+                    <hr class="dashed">
+                    
+                    <div class="tempat-tinggal">
+                        <h4 class="form-title">Informasi Alamat Domisili</h4>
+                        <div class="info info-alamat">
+                            <div class="row">
+                                <div class="col">
+                                    <span>Alamat Rumah</span>
+                                </div>
+                                <div class="col">
+                                    <span id="alamat-pasien-domisili">
+                                        @if($alamat_domisili == NULL)
+                                            <b>-</b>
+                                        @else
+                                            <b>{{ $alamat_domisili }}</b>
+                                        @endif
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="info info-rw-rw">
+                                <div class="row">
+                                    <div class="col">
+                                        <span>RT / RW</span>
+                                    </div>
+                                    <div class="col">
+                                        <span id="rt-pasien-domisili">
+                                            @if($rt_domisili == NULL)
+                                                <b>-</b>
+                                            @else
+                                                {{ $rt_domisili }}
+                                            @endif
+                                        </span> / 
+                                        <span id="rw-pasien-domisili">
+                                            @if($rw_domisili == NULL)
+                                                <b>-</b>
+                                            @else
+                                                {{ $rw_domisili }}
+                                            @endif
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
 

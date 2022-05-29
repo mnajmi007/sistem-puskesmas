@@ -133,14 +133,19 @@ class petugasController extends Controller
         // Mengambil data pasien
         $get_pasien = DB::table('pasien')
                       ->orderBy('id', 'desc')
-                      ->paginate(5);
+                      ->get();
+                    //   ->paginate(5)
+
+        // Mengambil data pekerjaan
+        $get_pekerjaan = DB::table('pekerjaan')->get();
 
         return view('dashPasien',[
             'count_anggotaJKN'=>$count_anggotaJKN,
             'count_nonJKN'=>$count_nonJKN,
             'count_pasienBaru'=>$count_pasienBaru,
             'count_pasienLama'=>$count_pasienLama,
-            'get_pasien'=>$get_pasien
+            'get_pasien'=>$get_pasien,
+            'get_pekerjaan'=>$get_pekerjaan
         ]);
     }
 
@@ -159,8 +164,11 @@ class petugasController extends Controller
         $rw = $get_pasien->rw;
         $pekerjaan = $get_pasien->pekerjaan;
         $kelurahan = $get_pasien->kelurahan;
+        $alamat_domisili = $get_pasien->alamat_domisili;
+        $rt_domisili = $get_pasien->rt_domisili;
+        $rw_domisili = $get_pasien->rw_domisili;
 
-        $get_kelurahan = DB::table('kelurahan')->get();
+        $get_kelurahan = DB::table('kelurahan')->whereNot('kelurahan', '=', $kelurahan)->get();
         $get_pekerjaan = DB::table('pekerjaan')->get();
         $get_pekerjaan2 = DB::table('pekerjaan')->whereNot('pekerjaan', '=', $pekerjaan)->get();
 
@@ -178,7 +186,11 @@ class petugasController extends Controller
             'rt'=>$rt,
             'rw'=>$rw,
             'pekerjaan'=>$pekerjaan,
-            'get_kelurahan2'=>$get_pekerjaan2
+            'get_kelurahan2'=>$get_pekerjaan2,
+            'alamat_domisili'=>$alamat_domisili,
+            'rt_domisili'=>$rt_domisili,
+            'rw_domisili'=>$rw_domisili,
+            'kelurahan'=>$kelurahan
         ]);
     }
 
@@ -197,6 +209,10 @@ class petugasController extends Controller
         $rt = $req->rt;
         $rw = $req->rw;
 
+        $alamat_domisili = $req->alamat_domisili;
+        $rt_domisili = $req->rt_domisili;
+        $rw_domisili = $req->rw_domisili;
+    
         // Ambil index kelurahan
         $get_kelurahan = DB::table('kelurahan')->where('kelurahan', '=', $kelurahan)->first();
         $id_kelurahan = $get_kelurahan->id;
@@ -239,6 +255,9 @@ class petugasController extends Controller
                              'rt'=>$rt,
                              'rw'=>$rw,
                              'kelurahan'=>$kelurahan,
+                             'alamat_domisili'=>$alamat_domisili,
+                             'rt_domisili'=>$rt_domisili,
+                             'rw_domisili'=>$rw_domisili,
                              'no_telp'=>$telp,
                              'tgl_lahir'=>$lahir,
                              'gender'=>$gender,
@@ -252,5 +271,52 @@ class petugasController extends Controller
         else{
             echo"error";
         }
+    }
+
+    public function dashCari($rm){
+        // Ambil pasien
+        $cari_pasien = Pasien::where('no_rm', '=', $rm) ->first();
+        
+        $nama = $cari_pasien->nama;
+        $no_rm = $cari_pasien->no_rm;
+        $jkn = $cari_pasien->status_jkn;
+        $nik = $cari_pasien->nik;
+        $tgl_daftar = $cari_pasien->created_at;
+
+        // Ambil jenis pekerjaan
+        $get_pekerjaan = DB::table('pekerjaan')->get();
+        
+        return view('cariPasien',[
+            'nama'=>$nama,
+            'no_rm'=>$no_rm,
+            'jkn'=>$jkn,
+            'nik'=>$nik,
+            'tgl_daftar'=>$tgl_daftar,
+            'get_pekerjaan'=>$get_pekerjaan
+        ]);
+    }
+
+    public function cariKunjungan($rm){
+        $hitung_kunjungan = DB::table('kunjungan')->where('no_rm', '=', $rm)->count();
+        $kunjungan_pasien = DB::table('kunjungan')
+                            ->join('pasien', 'kunjungan.no_rm', '=', 'pasien.no_rm')
+                            ->join('poli', 'kunjungan.id_poli', '=', 'poli.id_poli')
+                            ->where('kunjungan.no_rm', '=', $rm)
+                            ->orderBy('tgl_kunjungan', 'desc')
+                            ->get();
+
+        $cari_pasien = Pasien::where('no_rm', '=', $rm)->first();       
+        $nama = $cari_pasien->nama;
+
+        return view('kunjunganPasien',[
+            'nama'=>$nama,
+            'hitung_kunjungan'=>$hitung_kunjungan,
+            'kunjungan_pasien'=>$kunjungan_pasien
+        ]);
+    }
+
+    public function cariRM($rm){
+        echo $rm;
+        return view('rmPasien');
     }
 }

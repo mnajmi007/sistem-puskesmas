@@ -60,6 +60,12 @@ Route::get('/dashboard/tambah-pasien', function(){
 
 Route::get('/dashboard/edit-pasien/{id}', 'App\Http\Controllers\petugasController@dashEdit');
 
+Route::get('/dashboard/pasien/cari/{rm}', 'App\Http\Controllers\petugasController@dashCari');
+
+Route::get('/dashboard/pasien/cari/kunjungan/{rm}', 'App\Http\Controllers\petugasController@cariKunjungan');
+
+Route::get('/dashboard/pasien/cari/rm/{rm}', 'App\Http\Controllers\petugasController@cariRM');
+
 // Post Petugas
 Route::post('/tambah-dokter', 'App\Http\Controllers\petugasController@tambahDokter');
 

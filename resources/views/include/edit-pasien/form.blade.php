@@ -114,16 +114,14 @@
                             </div>
                             <div class="form-group">
                                 <label>Alamat Rumah</label>
-                                <textarea class="form-control" id="alamat" placeholder="Masukkan alamat rumah...">
-                                {{ $alamat }}
-                                </textarea>
+                                <textarea class="form-control" id="alamat" placeholder="Masukkan alamat rumah...">{{ $alamat }}</textarea>
                             </div>
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
                                         <label>Kelurahan</label>
                                         <select class="form-control kelurahan" id="kelurahan">
-                                            <option value="0" selected>Kelurahan...</option>
+                                            <option value="{{ $kelurahan }}" selected>{{ $kelurahan }}</option>
                                             @foreach($get_kelurahan as $k)
                                                 <option value="{{ $k->kelurahan }}">{{ $k->kelurahan }}</option>
                                             @endforeach
@@ -145,6 +143,43 @@
                             </div>
                             <div class="button">
                                 <button type="button" class="btn btn-outline-primary sebelum" id="sebelum">
+                                    Sebelum
+                                </button>
+                                <button type="button" class="btn btn-primary next-form" id="next-domisili">
+                                    Selanjutnya 
+                                    <i style="margin-left:5px;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                                            <path fill="none" d="M0 0h24v24H0z"/><path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" fill="rgba(255,255,255,1)"/>
+                                        </svg>
+                                    </i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="tempat-tinggal" id="tempat-tinggal-domisili" style="display:none;">
+                            <h4 class="form-title">Alamat Domisili</h4>
+                            <div class="divider"></div>
+                            <div id="notif-kosong"></div>
+                            <div class="form-group">
+                                <label>Alamat Rumah</label>
+                                <textarea class="form-control" id="alamat_domisili" placeholder="Masukkan alamat rumah...">{{ $alamat_domisili }}</textarea>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label>RT</label>
+                                        <input type="number" class="form-control rt-pasien" value="{{ $rt_domisili }}" id="rt_domisili" placeholder="RT...">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label>RW</label>
+                                        <input type="number" class="form-control rw-pasien" value="{{ $rt_domisili }}" id="rw_domisili" placeholder="RW...">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="button">
+                                <button type="button" class="btn btn-outline-primary sebelum" id="sebelum-domisili">
                                     Sebelum
                                 </button>
                                 <button type="button" class="btn btn-primary tambah-pasien update-pasien" id="{{$no_rm}}">

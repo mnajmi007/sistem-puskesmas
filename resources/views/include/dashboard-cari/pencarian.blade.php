@@ -3,19 +3,19 @@
         <div class="d-flex mb-3">
             <div class="form-group p-2 mr-2 flex-fill">
                 <label for="nama">Nama Pasien</label>
-                <input type="text" class="form-control" id="cari-nama" placeholder="Cari nama pasien...">
+                <input type="text" class="form-control" id="nama" placeholder="Cari nama pasien...">
             </div>
             <div class="form-group p-2 mr-2 flex-fill">
                 <label for="nama">Rekam Medis</label>
-                <input type="text" class="form-control" id="cari-rm" placeholder="Cari rekam medis...">
+                <input type="text" class="form-control" id="rm" placeholder="Cari rekam medis...">
             </div>
             <div class="form-group p-2 mr-2 flex-fill">
                 <label for="nama">Nomor KTP</label>
-                <input type="text" class="form-control" id="cari-ktp" placeholder="Cari no KTP...">
+                <input type="text" class="form-control" id="ktp" placeholder="Cari no KTP...">
             </div>
             <div class="form-group p-2 mr-2 flex-fill">
                 <label for="nama">Pekerjaan</label>
-                <select class="form-control" id="cari-pekerjaan">
+                <select class="form-control" id="pekerjaan">
                     <option value="0" selected>Pilih pekerjaan...</option>
                     @foreach($get_pekerjaan as $p)
                         <option value="{{ $p->pekerjaan }}">{{ $p->pekerjaan }}</option>
