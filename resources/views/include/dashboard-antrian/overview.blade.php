@@ -14,7 +14,7 @@
                         </span>
                     </div>
                     <h6><small>Antrian Periksa</small></h6>
-                    <h5><b>10 Pasien</b></h5>
+                    <h5><b>{{ $total_periksa }} Pasien</b></h5>
                 </div>
             </div>
         </div>
@@ -32,7 +32,7 @@
                         </span>
                     </div>
                     <h6><small>Menunggu Periksa</small></h6>
-                    <h5><b>20 Pasien</b></h5>
+                    <h5><b>{{ $tunggu_periksa }} Pasien</b></h5>
                 </div>
             </div>
         </div>
@@ -50,7 +50,7 @@
                         </span>
                     </div>
                     <h6><small>Sedang Periksa</small></h6>
-                    <h5><b>5 Pasien</b></h5>
+                    <h5><b>{{ $proses_periksa }} Pasien</b></h5>
                 </div>
             </div>
         </div>

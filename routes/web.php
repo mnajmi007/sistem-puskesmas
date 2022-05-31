@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\pasienController;
+use App\Models\Dokter;
+use App\Models\Pasien;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,25 +32,15 @@ Route::get('/dashboard', function(){
 
 Route::get('/dashboard/pasien', 'App\Http\Controllers\petugasController@informasiPasien');
 
-Route::get('/dashboard/kunjungan', function(){
-    return view('dashKunjungan');
-});
+Route::get('/dashboard/kunjungan', 'App\Http\Controllers\petugasController@dashKunjungan');
 
-Route::get('/dashboard/antrian', function(){
-    return view('dashAntrian');
-});
+Route::get('/dashboard/antrian', 'App\Http\Controllers\petugasController@dashAntrian');
 
-Route::get('/dashboard/poli-gigi', function(){
-    return view('dashGigi');
-});
+Route::get('/dashboard/poli-gigi', 'App\Http\Controllers\petugasController@dashGigi');
 
-Route::get('/dashboard/kia', function(){
-    return view('dashKIA');
-});
+Route::get('/dashboard/kia', 'App\Http\Controllers\petugasController@dashKIA');
 
-Route::get('/dashboard/mtbs', function(){
-    return view('dashMTBS');
-});
+Route::get('/dashboard/mtbs', 'App\Http\Controllers\petugasController@dashMTBS');
 
 Route::get('/dashboard/rekam-medis', function(){
     return view('dashRM');
@@ -65,6 +57,25 @@ Route::get('/dashboard/pasien/cari/{rm}', 'App\Http\Controllers\petugasControlle
 Route::get('/dashboard/pasien/cari/kunjungan/{rm}', 'App\Http\Controllers\petugasController@cariKunjungan');
 
 Route::get('/dashboard/pasien/cari/rm/{rm}', 'App\Http\Controllers\petugasController@cariRM');
+
+Route::get('/dashboard/pasien/cari/rm/cetak/{rm}', function($rm){
+    $no_rm = $rm;
+    $get_rm = DB::table('rekam_medis')
+              ->join('pasien', 'rekam_medis.no_rm', '=', 'pasien.no_rm')
+              ->join('poli', 'rekam_medis.id_poli', '=', 'poli.id_poli')
+              ->where('rekam_medis.id_rm', '=', $rm)
+              ->get();
+
+    $get_rm2 = DB::table('rekam_medis')->where('rekam_medis.id_rm', '=', $rm)->first();
+    $no_rm = $get_rm2->no_rm;
+
+    $pdf = PDF::loadView('cetak_rm',[
+        'get_rm'=>$get_rm,
+        'no_rm'=>$no_rm
+    ]);
+
+    return $pdf->download('pdf_file.pdf');
+});
 
 // Post Petugas
 Route::post('/tambah-dokter', 'App\Http\Controllers\petugasController@tambahDokter');

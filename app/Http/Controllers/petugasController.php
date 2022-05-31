@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Dokter;
 use App\Models\Pasien;
 use DB;
+use PDF;
 
 class petugasController extends Controller
 {
@@ -316,7 +317,123 @@ class petugasController extends Controller
     }
 
     public function cariRM($rm){
-        echo $rm;
-        return view('rmPasien');
+        $call_rm = DB::table('rekam_medis')
+                  ->join('pasien','rekam_medis.no_rm', '=', 'pasien.no_rm')
+                  ->join('poli', 'rekam_medis.id_poli', '=', 'poli.id_poli')
+                  ->where('rekam_medis.no_rm', '=', $rm);
+
+        $count_rm = $call_rm->count();
+        $get_rm = $call_rm->get();
+
+        return view('rmPasien',[
+            'get_rm'=>$get_rm,
+            'count_rm'=>$count_rm
+        ]);
+    }
+
+    public function dashKunjungan(){
+        $get_kunjungan = DB::table('kunjungan')
+                         ->join('pasien', 'kunjungan.no_rm', '=', 'pasien.no_rm')
+                         ->join('poli', 'kunjungan.id_poli', '=', 'poli.id_poli')
+                         ->orderBy('kunjungan.id', 'desc')
+                         ->get();
+
+        return view('dashKunjungan',[
+            'get_kunjungan'=>$get_kunjungan
+        ]);
+    }
+
+    public function dashAntrian(){
+        // Ambil antrian yang menunggu periksa
+        $tunggu_periksa = DB::table('kunjungan')->where('status_periksa','=','Menunggu')->count();
+
+        // Ambil antrian yang sedang periksa
+        $proses_periksa = DB::table('kunjungan')->where('status_periksa','=','Proses')->count();
+
+        $total_periksa = $tunggu_periksa + $proses_periksa;
+
+        // Panggil tabel antrian
+        $antrian = DB::table('kunjungan')->orderBy('id', 'desc');
+
+        // hitung antrian
+        $hitung_antrian = $antrian->count();
+
+        // Ambil seluruh antrian
+        $get_antrian = $get_kunjungan = DB::table('kunjungan')
+                        ->join('pasien', 'kunjungan.no_rm', '=', 'pasien.no_rm')
+                        ->join('poli', 'kunjungan.id_poli', '=', 'poli.id_poli')
+                        ->orderBy('kunjungan.id', 'desc')
+                        ->get();
+
+        return view('dashAntrian',[
+            'tunggu_periksa'=>$tunggu_periksa,
+            'proses_periksa'=>$proses_periksa,
+            'total_periksa'=>$total_periksa,
+            'hitung_antrian'=>$hitung_antrian,
+            'get_antrian'=>$get_antrian
+        ]);
+    }
+
+    public function dashGigi(){
+        // Panggil tabel antrian
+        $antrian = DB::table('kunjungan')->where('id_poli', '=', 'P-0002')->orderBy('id', 'desc');
+
+        // hitung antrian
+        $hitung_antrian = $antrian->count();
+
+        // Ambil seluruh antrian
+        $get_antrian = $get_kunjungan = DB::table('kunjungan')
+                        ->join('pasien', 'kunjungan.no_rm', '=', 'pasien.no_rm')
+                        ->join('poli', 'kunjungan.id_poli', '=', 'poli.id_poli')
+                        ->where('kunjungan.id_poli', '=', 'P-0002')
+                        ->orderBy('kunjungan.id', 'desc')
+                        ->get();
+
+        return view('dashGigi',[
+            'hitung_antrian'=>$hitung_antrian,
+            'get_antrian'=>$get_antrian
+        ]);
+    }
+
+    public function dashKIA(){
+        // Panggil tabel antrian
+        $antrian = DB::table('kunjungan')->where('id_poli', '=', 'P-0003')->orderBy('id', 'desc');
+
+        // hitung antrian
+        $hitung_antrian = $antrian->count();
+
+        // Ambil seluruh antrian
+        $get_antrian = $get_kunjungan = DB::table('kunjungan')
+                        ->join('pasien', 'kunjungan.no_rm', '=', 'pasien.no_rm')
+                        ->join('poli', 'kunjungan.id_poli', '=', 'poli.id_poli')
+                        ->where('kunjungan.id_poli', '=', 'P-0003')
+                        ->orderBy('kunjungan.id', 'desc')
+                        ->get();
+
+        return view('dashKIA',[
+            'hitung_antrian'=>$hitung_antrian,
+            'get_antrian'=>$get_antrian
+        ]);
+    }
+
+    public function dashMTBS(){
+        // Panggil tabel antrian
+        $antrian = DB::table('kunjungan')->where('id_poli', '=', 'P-0004')->orderBy('id', 'desc');
+
+        // hitung antrian
+        $hitung_antrian = $antrian->count();
+
+        // Ambil seluruh antrian
+        $get_antrian = $get_kunjungan = DB::table('kunjungan')
+                        ->join('pasien', 'kunjungan.no_rm', '=', 'pasien.no_rm')
+                        ->join('poli', 'kunjungan.id_poli', '=', 'poli.id_poli')
+                        ->where('kunjungan.id_poli', '=', 'P-0004')
+                        ->orderBy('kunjungan.id', 'desc')
+                        ->get();
+
+        return view('dashMTBS',[
+            'hitung_antrian'=>$hitung_antrian,
+            'get_antrian'=>$get_antrian
+        ]);
     }
 }
