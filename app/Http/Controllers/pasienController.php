@@ -18,56 +18,72 @@ class pasienController extends Controller
     public function pasienBaru(Request $req){
         // Variable
         $nama = $req->nama;
-        $tanggal = $req->tanggal;
+        $tglLahir = $req->tanggal;
         $telp = $req->telp;
         $alamat = $req->alamat;
         $poli = $req->poli;
-        $periksa = $req->periksa;
+        $tglPeriksa = $req->periksa;
+        $buat_id = "";
+        $buat_id_rm = "";
 
         // $no_rm = "";
         $no = 1;
         $kelurahan = 00;
         $keluarga = 00;
 
-        // Cek Pasien
+        // Cek id tabel pasien
         $cek_pasien = Pasien::where('id', '>', 0)->max('id');
 
         $buat_id = ($cek_pasien)+1;
+
         $no_rm = $kelurahan. sprintf("%04s", $buat_id). $keluarga;
 
-        $pasien = array(
-            "nama"=>$nama, 
-            "TTL"=>$tanggal, 
-            "telp"=>$telp,
-            "alamat"=>$alamat,
-            "poli"=>$poli,
-            "periksa"=>$periksa,
-            "rm"=> $no_rm
-        );
+        // Cek id tabel rekam medis
+        $cek_rm = DB::table('rekam_medis')->where('id', '>', 0)->max('id');
+
+        $buat_id_rm = ($cek_rm)+1;
+
+        $generate_id_rm = "rm-".sprintf("%04s", $buat_id_rm);
+        
+        // $pasien = array(
+        //     "nama"=>$nama, 
+        //     "TTL"=>$tanggal, 
+        //     "telp"=>$telp,
+        //     "alamat"=>$alamat,
+        //     "poli"=>$poli,
+        //     "periksa"=>$periksa,
+        //     "rm"=> $no_rm
+        // );
 
         $input_pasien = Pasien::create([
+            'id'=>$buat_id,
             'nama'=>$nama,
             'no_rm'=>$no_rm,
-            'tgl_lahir'=>$tanggal,
+            'tgl_lahir'=>$tglLahir,
             'no_telp'=>$telp,
             'alamat'=>$alamat,
         ]);
 
         if($input_pasien){
-
-            $input_rm = DB::table('list_no_rm')->insert([
-                'no_rm'=>$no_rm
-            ]);
-            
+            echo"Pendaftaran online berhasil!";
             $input_kunjungan = DB::table('kunjungan')->insert([
                 'no_rm'=>$no_rm,
                 'id_poli'=>$poli,
                 'status_periksa'=>'Proses',
                 'status_pasien'=>'Baru',
-                'tgl_kunjungan'=>$periksa
+                'tgl_kunjungan'=>$tglPeriksa,
+                'created_at'=>NOW(),
+                'updated_at'=>NOW()
             ]);
-
-            echo"Pendaftaran online berhasil!";
+            
+            $input_rm = DB::table('rekam_medis')->insert([
+                'id_rm'=>$generate_id_rm,
+                'no_rm'=>$no_rm,
+                'id_poli'=>$poli,
+                'tgl_periksa'=>$tglPeriksa,
+                'created_at'=>NOW(),
+                'updated_at'=>NOW()
+            ]);
         }
         else{
             echo"Pendaftaran online berhasil!";

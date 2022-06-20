@@ -8,7 +8,7 @@
 	<style type="text/css">
 		table tr td,
 		table tr th{
-			font-size: 9pt;
+			font-size: 7pt;
 		}
 	</style>
 	<p><small>NO RM: {{ $no_rm }}</small></p>
@@ -17,10 +17,13 @@
 			<tr>
 				<th>ID</th>
 				<th>No RM</th>
+				<th>Dokter</th>
 				<th>Poli</th>
                 <th>Subjective</th>
 				<th>Objective</th>
                 <th>Diagnosa</th>
+				<th>Tindakan</th>
+				<th>Tanggal Periksa</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -28,6 +31,7 @@
 			<tr>
 				<td>{{$p->id_rm}}</td>
 				<td>{{$p->no_rm}}</td>
+				<td>{{$p->nama_dokter}}</td>
 				<td>{{$p->nama_poli}}</td>
 				<td>{{$p->subjective}}</td>
 				<td>
@@ -50,6 +54,8 @@
 				}
 				?>
                 </td>
+				<td></td>
+				<td>{{$p->tgl_periksa}}</td>
 			</tr>
 			@endforeach
 		</tbody>

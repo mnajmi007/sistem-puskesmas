@@ -4,6 +4,7 @@
         <a href="#" class="btn btn-link page-list" id="form-dua">2</a>
     </div>
     <form action="#">
+        <!-- {{ csrf_field() }} -->
         @include('include.pasien-baru.formPertama')
         @include('include.pasien-baru.formKedua')
     </form>

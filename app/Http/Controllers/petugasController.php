@@ -2,16 +2,80 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Http\Request;
 use App\Models\Dokter;
 use App\Models\Pasien;
 use DB;
 use PDF;
+use Session;
 
 class petugasController extends Controller
 {
+    public function tambahAdmin(Request $req){
+        $username = $req->username;
+        $pwd = $req->pwd;
+        $no = 0;
+        $generate_id = "";
+
+        // Enkripsi username
+        $encryptUsername = Crypt::encryptString($username);
+
+        // Enkripsi Password
+        $encryptPwd = Crypt::encryptString($pwd);
+
+        // Cek data petugas
+        $petugas = DB::table('petugas')->where('id', '>', 0)->max('id');
+
+        $id_petugas = ($petugas)+1;
+        $generate_id = "Admin-".sprintf("%04s", $id_petugas);
+
+        $input = DB::table('petugas')->insert([
+            'id_petugas'=>$generate_id,
+            'username'=>$encryptUsername,
+            'pwd'=>$encryptPwd
+        ]);
+
+        if($input){
+            echo"Input berhasil!";
+        }
+        else{
+            echo"Input gagal!";
+        }
+    }
+
+    public function loginPetugas(Request $req){
+        $idPetugas = $req->idPetugas;
+        $username = $req->username;
+        $pwd = $req->pwd;
+
+        // Mencocokan username dan password
+        $cari_petugas = DB::table('petugas')
+                        ->where('id_petugas', '=', $idPetugas)
+                        ->first();
+
+        // Dekripsi data login petugas 
+        $id_petugas = $cari_petugas->id_petugas;
+        $decryptUsername = Crypt::decryptString($cari_petugas->username);
+        $decryptPwd = Crypt::decryptString($cari_petugas->pwd);
+
+        if($username != $decryptUsername || $pwd != $decryptPwd){
+            echo"Username atau password salah!";
+        }
+        else{
+            $session_petugas = Session::put('username', $decryptUsername);
+            $session_id = Session::put('id_petugas', $id_petugas);
+            echo"Berhasil";
+        }
+    }
+
+    public function logoutPetugas(){
+        Session::flush();
+        return redirect('/login-petugas');
+    }
+
     public function tambahDokter(){
-        $dokter = Dokter::create(
+        $dokter = DB::table('dokter')->insert([
             [
                 'nama_dokter' => 'Bambang Adiningrat',
                 'no_telp_dokter' => '08821234567',
@@ -52,7 +116,7 @@ class petugasController extends Controller
                 'no_telp_dokter' => '08141234569',
                 'id_poli' => 'P-0004'
             ]
-        );
+        ]);
 
         if($dokter){
             echo"Berhasil!";
@@ -77,6 +141,7 @@ class petugasController extends Controller
         ]);
     }
     public function tambahTindakan(){
+
         $tindakan = DB::table('tindakan')->insert([
             ['id_tindakan' => 'TD-0006', 'id_poli' => 'P-0001', 'nama_tindakan' => 'Injeksi', 'tarif_tindakan' => 10000],
             ['id_tindakan' => 'TD-0007', 'id_poli' => 'P-0001', 'nama_tindakan' => 'Skin Test', 'tarif_tindakan' => 5000],
@@ -88,6 +153,65 @@ class petugasController extends Controller
         ]);
         
         if($tindakan){
+            echo"Berhasil!";
+        }
+        else{
+            echo"Gagal!";
+        }
+    }
+
+    public function tambahPoli(){
+        $poli = DB::table('poli')->insert([
+            ['id_poli' => 'P-0001', 'nama_poli' => 'Poli Umum', 'created_at' => NOW(), 'updated_at' => NOW()],
+            ['id_poli' => 'P-0002', 'nama_poli' => 'Poli Gigi', 'created_at' => NOW(), 'updated_at' => NOW()],
+            ['id_poli' => 'P-0003', 'nama_poli' => 'Poli KIA', 'created_at' => NOW(), 'updated_at' => NOW()],
+            ['id_poli' => 'P-0004', 'nama_poli' => 'Poli MTBS', 'created_at' => NOW(), 'updated_at' => NOW()]
+        ]);
+
+        if($poli){
+            echo"Berhasil!";
+        }
+        else{
+            echo"Gagal!";
+        }
+    }
+
+    public function tambahPekerjaan(){
+        $jobs = DB::table('pekerjaan')->insert([
+            ['pekerjaan' => 'Wiraswasta', 'created_at' => NOW(), 'updated_at' => NOW()],
+            ['pekerjaan' => 'BUMN', 'created_at' => NOW(), 'updated_at' => NOW()],
+            ['pekerjaan' => 'Buruh', 'created_at' => NOW(), 'updated_at' => NOW()],
+            ['pekerjaan' => 'Tidak/Belum Bekerja', 'created_at' => NOW(), 'updated_at' => NOW()],
+            ['pekerjaan' => 'Rumah Tangga', 'created_at' => NOW(), 'updated_at' => NOW()],
+            ['pekerjaan' => 'Pelajar/Mahasiswa', 'created_at' => NOW(), 'updated_at' => NOW()],
+            ['pekerjaan' => 'Pensiunan', 'created_at' => NOW(), 'updated_at' => NOW()],
+            ['pekerjaan' => 'PNS', 'created_at' => NOW(), 'updated_at' => NOW()],
+            ['pekerjaan' => 'Polisi/TNI', 'created_at' => NOW(), 'updated_at' => NOW()],
+            ['pekerjaan' => 'Petani/Perkebunan', 'created_at' => NOW(), 'updated_at' => NOW()],
+            ['pekerjaan' => 'Perdagangan', 'created_at' => NOW(), 'updated_at' => NOW()],
+        ]);
+
+        if($jobs){
+            echo"Berhasil!";
+        }
+        else{
+            echo"Gagal!";
+        }
+    }
+
+    public function tambahKelurahan(){
+        $kelurahan = DB::table('kelurahan')->insert([
+            ['kelurahan' => 'Bendan Duwur', 'created_at' => NOW(), 'updated_at' => NOW()],
+            ['kelurahan' => 'Bendan Ngisor', 'created_at' => NOW(), 'updated_at' => NOW()],
+            ['kelurahan' => 'Bendungan', 'created_at' => NOW(), 'updated_at' => NOW()],
+            ['kelurahan' => 'Gajahmungkur', 'created_at' => NOW(), 'updated_at' => NOW()],
+            ['kelurahan' => 'Karangrejo', 'created_at' => NOW(), 'updated_at' => NOW()],
+            ['kelurahan' => 'Lempong Sari', 'created_at' => NOW(), 'updated_at' => NOW()],
+            ['kelurahan' => 'Petompon', 'created_at' => NOW(), 'updated_at' => NOW()],
+            ['kelurahan' => 'Sampangan', 'created_at' => NOW(), 'updated_at' => NOW()],
+        ]);
+
+        if($kelurahan){
             echo"Berhasil!";
         }
         else{
@@ -140,13 +264,17 @@ class petugasController extends Controller
         // Mengambil data pekerjaan
         $get_pekerjaan = DB::table('pekerjaan')->get();
 
+        // Menghitung jumlah keseluruhan pasien
+        $count_all = Pasien::all()->count();
+
         return view('dashPasien',[
             'count_anggotaJKN'=>$count_anggotaJKN,
             'count_nonJKN'=>$count_nonJKN,
             'count_pasienBaru'=>$count_pasienBaru,
             'count_pasienLama'=>$count_pasienLama,
             'get_pasien'=>$get_pasien,
-            'get_pekerjaan'=>$get_pekerjaan
+            'get_pekerjaan'=>$get_pekerjaan,
+            'count_all'=>$count_all
         ]);
     }
 
@@ -213,7 +341,8 @@ class petugasController extends Controller
         $alamat_domisili = $req->alamat_domisili;
         $rt_domisili = $req->rt_domisili;
         $rw_domisili = $req->rw_domisili;
-    
+        $jkn = $req->jkn;
+
         // Ambil index kelurahan
         $get_kelurahan = DB::table('kelurahan')->where('kelurahan', '=', $kelurahan)->first();
         $id_kelurahan = $get_kelurahan->id;
@@ -238,35 +367,44 @@ class petugasController extends Controller
             "kelurahan"=>$kelurahan,
             "rt"=>$rt,
             "rw"=>$rw,
-            "new_rm"=>$generate_rm
+            "new_rm"=>$generate_rm,
+            'alamat_domisili'=>$alamat_domisili,
+            'rt_domisili'=>$rt_domisili,
+            'rw_domisili'=>$rw_domisili
         );
         
         // echo json_encode($array);
-
-        // Update data pasien
         $update_pasien = DB::table('pasien')
-                         ->where('no_rm','=',$rm)
-                         ->update([
-                             'nama'=>$pasien,
-                             'no_rm'=>$generate_rm,
-                             'status_jkn'=>NULL,
-                             'nik'=>$ktp,
-                             'pekerjaan'=>$pekerjaan,
-                             'alamat'=>$alamat,
-                             'rt'=>$rt,
-                             'rw'=>$rw,
-                             'kelurahan'=>$kelurahan,
-                             'alamat_domisili'=>$alamat_domisili,
-                             'rt_domisili'=>$rt_domisili,
-                             'rw_domisili'=>$rw_domisili,
-                             'no_telp'=>$telp,
-                             'tgl_lahir'=>$lahir,
-                             'gender'=>$gender,
-                             'gol_dar'=>$goldar,
-                             'updated_at'=>NOW()
-                         ]);
-        
+                        ->where('no_rm','=',$rm)
+                        ->update([
+                            'nik'=>$ktp,
+                            'no_rm'=>$generate_rm,
+                            'rt'=>$rt,
+                            'rw'=>$rw,
+                            'kelurahan'=>$kelurahan,
+                            'alamat_domisili'=>$alamat_domisili,
+                            'rt_domisili'=>$rt_domisili,
+                            'rw_domisili'=>$rw_domisili,
+                            'pekerjaan'=>$pekerjaan,
+                            'gender'=>$gender,
+                            'gol_dar'=>$goldar,
+                            'updated_at'=>NOW(),
+                            'status_jkn'=>$jkn
+                        ]);
+
         if($update_pasien){
+            $update_rm = DB::table('rekam_medis')
+                     ->where('no_rm', '=', $rm)
+                     ->update([
+                        'no_rm'=>$generate_rm
+                     ]);
+                     
+            $update_kunjungan = DB::table('kunjungan')
+                                ->where('no_rm', '=', $rm)
+                                ->update([
+                                    'no_rm'=>$generate_rm
+                                ]);
+
             echo $generate_rm;
         }
         else{
@@ -435,5 +573,149 @@ class petugasController extends Controller
             'hitung_antrian'=>$hitung_antrian,
             'get_antrian'=>$get_antrian
         ]);
+    }
+
+    public function dashRM(){
+        // Panggil rekam medis
+        $rm_pasien = DB::table('rekam_medis')->orderBy('id','desc');
+
+        // Hitung rekam medis
+        $hitung = $rm_pasien->count();
+
+        // Ambil rekam medis
+        $ambil = DB::table('rekam_medis')
+                 ->join('pasien', 'rekam_medis.no_rm', '=', 'pasien.no_rm')
+                 ->join('poli', 'rekam_medis.id_poli', '=', 'poli.id_poli')
+                 ->orderBy('rekam_medis.id','desc')
+                 ->get();
+
+        return view('dashRM',[
+            'hitung'=>$hitung,
+            'ambil'=>$ambil
+        ]);
+    }
+
+    public function dashTambah(){
+        // Panggil pekerjaan
+        $pekerjaan = DB::table('pekerjaan')->get();
+        
+        // Panggil kelurahan
+        $kelurahan = DB::table('kelurahan')->get();
+
+        //Panggil Poli 
+        $poli = DB::table('poli')->get();
+
+        return view('dashTambah',[
+            'pekerjaan'=>$pekerjaan,
+            'kelurahan'=>$kelurahan,
+            'poli'=>$poli
+        ]);
+    }
+
+    public function tambahPasien(Request $req){
+        $pasien = $req->pasien;
+        $lahir = $req->lahir;
+        $pekerjaan = $req->pekerjaan;
+        $gender = $req->gender;
+
+        $goldar = $req->goldar;
+        $telp = $req->telp;
+        $ktp = $req->ktp;
+        $alamat = $req->alamat;
+        $kelurahan = $req->kelurahan;
+        $rt = $req->rt;
+        $rw = $req->rw;
+
+        $alamat_domisili = $req->alamat_domisili;
+        $rt_domisili = $req->rt_domisili;
+        $rw_domisili = $req->rw_domisili;
+
+        $poli = $req->poli;
+        $tgl_periksa = $req->tgl_periksa;
+
+        $array = array(
+            'pasien'=>$pasien,
+            'lahir'=>$lahir,
+            'pekerjaan'=>$pekerjaan,
+            'gender'=>$gender,
+            'goldar'=>$goldar,
+            'telp'=>$telp,
+            'ktp'=>$ktp,
+            'alamat'=>$alamat,
+            'kelurahan'=>$kelurahan,
+            'rt'=>$rt,
+            'rw'=>$rw,
+            'alamat_domisili'=>$alamat_domisili,
+            'rt_domisili'=>$rt_domisili,
+            'rw_domisili'=>$rw_domisili,
+            'poli'=>$poli,
+            'tgl_periksa'=>$tgl_periksa
+        );
+
+        $get_kelurahan = DB::table('kelurahan')->where('kelurahan', '=', $kelurahan)->first();
+
+        $id_kelurahan = $get_kelurahan->id;
+        $keluarga = "01";
+
+        // Cek Pasien
+        $cek_pasien = Pasien::where('id', '>', 0)->max('id');
+
+        $buat_id = ($cek_pasien)+1;
+        $no_rm = "0".$id_kelurahan. sprintf("%04s", $buat_id). $keluarga;
+
+        // Buat id rm 
+        $cek_rm = DB::table('rekam_medis')->where('id', '>', 0)->max('id');
+        $buat_id_rm = ($cek_rm)+1;
+
+        $id_rm = "rm-".sprintf("%04s", $buat_id_rm);
+
+        $insert_pasien = DB::table('pasien')->insert([
+            'nama'=>$pasien,
+            'no_rm'=>$no_rm,
+            'status_jkn'=>NULL,
+            'nik'=>$ktp,
+            'pekerjaan'=>$pekerjaan,
+            'alamat'=>$alamat,
+            'rt'=>$rt,
+            'rw'=>$rw,
+            'kelurahan'=>$kelurahan,
+            'alamat_domisili'=>$alamat_domisili,
+            'rt_domisili'=>$rt_domisili,
+            'rw_domisili'=>$rw_domisili,
+            'no_telp'=>$telp,
+            'tempat_lahir'=>NULL,
+            'tgl_lahir'=>$lahir,
+            'gender'=>$gender,
+            'gol_dar'=>$goldar,
+            'created_at'=>NOW(),
+            'updated_at'=>NOW()
+        ]);
+
+        $insert_rm = DB::table('rekam_medis')->insert([
+            'id_rm'=>$id_rm,
+            'no_rm'=>$no_rm,
+            'id_poli'=>$poli,
+            'tgl_periksa'=>$tgl_periksa,
+            'created_at'=>NOW(),
+            'updated_at'=>NOW()
+        ]);
+
+        $insert_kunjungan = DB::table('kunjungan')->insert([
+            'no_rm'=>$no_rm,
+            'id_poli'=>$poli,
+            'status_jkn'=>NULL,
+            'status_periksa'=>'Proses',
+            'status_pasien'=>'Baru',
+            'tgl_kunjungan'=>$tgl_periksa,
+            'created_at'=>NOW(),
+            'updated_at'=>NOW()
+        ]); 
+
+        if($insert_pasien){
+            echo"Input berhasil!";
+        }
+        else{
+            echo"Input gagal!";
+        }
     }
 }

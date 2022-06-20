@@ -1,7 +1,7 @@
 <!-- Background Color -->
 <div class="background">
     <div class="wrapper">
-        <h3>Visi Puskesmas Suka Sehat</h3>
+        <h3>Visi Puskesmas Pegandan</h3>
         <!-- Media -->
         <div class="media">
             <div class="media-bg">

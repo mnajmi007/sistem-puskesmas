@@ -21,8 +21,16 @@
         </style>
     </head>
     <body class="antialiased">
-        <form action="/buat-rm" method="POST">
+        <form action="/tambah-admin" method="POST">
             @csrf()
+            <div>
+                <label>Username Admin</label>
+                <input type="text" name="username" placeholder="Masukkan username..." autocomplete="off">
+            </div>
+            <div>
+                <label>Password Admin</label>
+                <input type="password" name="pwd" placeholder="Masukkan password..." autocomplete="off">
+            </div>
             <button type="submit">Tambah Dokter</button>
         </form>
     </body>

@@ -42,13 +42,9 @@ Route::get('/dashboard/kia', 'App\Http\Controllers\petugasController@dashKIA');
 
 Route::get('/dashboard/mtbs', 'App\Http\Controllers\petugasController@dashMTBS');
 
-Route::get('/dashboard/rekam-medis', function(){
-    return view('dashRM');
-});
+Route::get('/dashboard/rekam-medis','App\Http\Controllers\petugasController@dashRM');
 
-Route::get('/dashboard/tambah-pasien', function(){
-    return view('dashTambah');
-});
+Route::get('/dashboard/tambah-pasien', 'App\Http\Controllers\petugasController@dashTambah');
 
 Route::get('/dashboard/edit-pasien/{id}', 'App\Http\Controllers\petugasController@dashEdit');
 
@@ -63,6 +59,7 @@ Route::get('/dashboard/pasien/cari/rm/cetak/{rm}', function($rm){
     $get_rm = DB::table('rekam_medis')
               ->join('pasien', 'rekam_medis.no_rm', '=', 'pasien.no_rm')
               ->join('poli', 'rekam_medis.id_poli', '=', 'poli.id_poli')
+              ->join('dokter', 'rekam_medis.id_dokter', '=', 'dokter.id')
               ->where('rekam_medis.id_rm', '=', $rm)
               ->get();
 
@@ -84,7 +81,19 @@ Route::post('/tambah-tindakan', 'App\Http\Controllers\petugasController@tambahTi
 
 Route::post('/tambah-diagnosa', 'App\Http\Controllers\petugasController@tambahDiagnosa');
 
+Route::post('/tambah-poli', 'App\Http\Controllers\petugasController@tambahPoli');
+
+Route::post('/tambah-pekerjaan', 'App\Http\Controllers\petugasController@tambahPekerjaan');
+
+Route::post('/tambah-kelurahan', 'App\Http\Controllers\petugasController@tambahKelurahan');
+
+Route::post('/tambah-admin', 'App\Http\Controllers\petugasController@tambahAdmin');
+
 Route::post('/handle-edit', 'App\Http\Controllers\petugasController@handleEdit');
+
+Route::post('/login-petugas','App\Http\Controllers\petugasController@loginPetugas');
+
+Route::get('/logout-petugas','App\Http\Controllers\petugasController@logoutPetugas');
 
 // Post Pasien
 Route::post('/buat-rm', 'App\Http\Controllers\petugasController@buatRM');
@@ -92,3 +101,6 @@ Route::post('/buat-rm', 'App\Http\Controllers\petugasController@buatRM');
 Route::post('/pasien-lama', 'App\Http\Controllers\pasienController@pasienLama');
 
 Route::post('/pasien-baru', 'App\Http\Controllers\pasienController@pasienBaru');
+
+// Post tambah pasien
+Route::post('/tambah-pasien-baru', 'App\Http\Controllers\petugasController@tambahPasien');

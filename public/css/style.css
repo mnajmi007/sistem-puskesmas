@@ -1452,6 +1452,25 @@
 
     /* Akhir styling halaman login petugas */
 
+    .no-entry{
+        margin-top: 10rem;
+    }
+
+    .no-entry-image{
+        width: 120px;
+        height: auto;
+        margin-bottom: 25px;
+    }
+
+    .no-entry-text{
+        font-weight: bold;
+        color: #3B4148;
+    }
+
+    .no-entry-redirect{
+        font-size: 20px;
+    }
+
     /* Awal styling halaman dashboard petugas */
     #body .sidebar{
         background-color: #0C96C5;
@@ -1914,6 +1933,25 @@
 
     /* Akhir styling halaman login petugas */
 
+    .no-entry{
+        margin-top: 10rem;
+    }
+
+    .no-entry-image{
+        width: 120px;
+        height: auto;
+        margin-bottom: 25px;
+    }
+
+    .no-entry-text{
+        font-weight: bold;
+        color: #3B4148;
+    }
+
+    .no-entry-redirect{
+        font-size: 20px;
+    }
+
     /* Awal styling halaman dashboard petugas */
     #body .sidebar{
         background-color: #0C96C5;
@@ -2351,6 +2389,25 @@
     }
 
     /* Akhir styling halaman login petugas */
+
+    .no-entry{
+        margin-top: 10rem;
+    }
+
+    .no-entry-image{
+        width: 120px;
+        height: auto;
+        margin-bottom: 25px;
+    }
+
+    .no-entry-text{
+        font-weight: bold;
+        color: #3B4148;
+    }
+
+    .no-entry-redirect{
+        font-size: 20px;
+    }
 
     /* Awal styling halaman dashboard petugas */
     #body .sidebar{

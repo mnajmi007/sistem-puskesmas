@@ -25,6 +25,14 @@
                                 <label>Tanggal Lahir</label>
                                 <input type="date" class="form-control tgl-lahir" id="tgl-lahir" value="{{ $tgl_lahir }}" placeholder="Masukkan tanggal lahir...">
                             </div>
+                            <div class="form-group">
+                                <label>Kepemilikan JKN</label>
+                                <select id="jkn" class="form-control">
+                                    <option value="Pilih" selected>Pilih kepemilikan JKN...</option>
+                                    <option value="Anggota">Anggota JKN</option>
+                                    <option value="Non Anggota">Non JKN</option>
+                                </select>
+                            </div>
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">

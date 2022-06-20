@@ -90,12 +90,12 @@ $(function(){
             },
             success:function(data){
                 if(data == "Pendaftaran online berhasil!"){
-                    $("#bukti-nama").html(nama);
-                    $("#bukti-telp").html(telp);
-                    $("#bukti-lahir").html(tgl);
-                    $("#bukti-alamat").html(alamat);
-                    $("#bukti-poli").html(poli);
-                    $("#bukti-periksa").html(periksa);
+                    $("#bukti-nama").html("<b>"+nama+"</b>");
+                    $("#bukti-telp").html("<b>"+telp+"</b>");
+                    $("#bukti-lahir").html("<b>"+tgl+"</b>");
+                    $("#bukti-alamat").html("<b>"+alamat+"</b>");
+                    $("#bukti-poli").html("<b>"+poli+"</b>");
+                    $("#bukti-periksa").html("<b>"+periksa+"</b>");
                     $("#modal-bukti").modal("show");
                 }
                 else{
@@ -276,11 +276,12 @@ $(function(){
     // Awal JS untuk login petugas
     $("#masuk-petugas").prop("disabled", true);
 
-    $("#username, #pwd").keyup(function(){
+    $("#username, #pwd, #idPetugas").keyup(function(){
+        var idPetugas = $("#idPetugas").val();
         var username = $("#username").val();
         var pwd = $("#pwd").val();
 
-        if(username != '' && pwd != ''){
+        if(username != '' && pwd != '' && idPetugas != ''){
             $("#masuk-petugas").prop("disabled", false);
         }
         else{
@@ -291,13 +292,30 @@ $(function(){
 
     // Submit data goes here
     $("#masuk-petugas").click(function(){
+        var idPetugas = $("#idPetugas").val();
         var username = $("#username").val();
         var pwd = $("#pwd").val();
         var data = {
+            'idPetugas':idPetugas,
             'username':username,
             'pwd':pwd
         }
-        $("#notif-kosong").html("<span>Data inserted!</span>");
+        $.ajax({
+            type:'POST',
+            url:'/login-petugas',
+            data:data,
+            headers:{
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success:function(data){
+                if(data == "Berhasil"){
+                    window.location.href='/dashboard/'
+                }
+                else{
+                    alert(data);
+                }
+            }
+        });
         return false;
     });
 
@@ -361,13 +379,13 @@ $(function(){
         }
     });
 
-    $("#telp-pasien, #nmr-ktp, #alamat-pasien, #kelurahan, #rt-pasien, #rw-pasien").change(function(){
+    $("#telp-pasien, #nmr-ktp, #alamat, #kelurahan, #rt, #rw").change(function(){
         var telp = $("#telp-pasien").val();
         var ktp = $("#nmr-ktp").val();
-        var alamat = $("#alamat-pasien").val();
+        var alamat = $("#alamat").val();
         var kelurahan = $("#kelurahan").val(); 
-        var rt = $("#rt-pasien").val();
-        var rw = $("#rw-pasien").val();
+        var rt = $("#rt").val();
+        var rw = $("#rw").val();
 
         if(telp != '' && ktp != '' && alamat != '' && kelurahan != 0 && rt != 0 && rw != 0){
             $("#tambah-pasien").prop("disabled", false);
@@ -396,13 +414,30 @@ $(function(){
         return false
     });
 
+    // Petugas - Tambah Pasien
+    // Kembali ke form profil pasien
     $("#sebelum").click(function(){
         $("#data-profil").css("display", "block");
         $("#tempat-tinggal").css("display", "none");
     });
 
-    // Submit tambah pasien goes here!!!
-    $("#tambah-pasien").click(function(){
+    // Petugas - Tambah Pasien
+    // kembali ke form alamat domisili pasien
+    $("#sebelum-periksa").click(function(){
+        $("#tempat-tinggal-domisili").css("display", "block");
+        $("#jadwal-periksa").css("display", "none");
+    });
+
+    // Petugas - Tambah Pasien
+    // Lanjut ke form jadwal periksa pasien
+    $("#next-periksa").click(function(){
+        $("#tempat-tinggal-domisili").css("display", "none");
+        $("#jadwal-periksa").css("display", "block");
+    });
+    
+    // Petugas - Tambah Pasien
+    // Lanjut ke form alamat domisili
+    $("#next-domisili").click(function(){
         var nama = $("#nama").val();
         var tgl = $("#tgl-lahir").val();
         var pekerjaan = $("#pekerjaan").val();
@@ -411,10 +446,10 @@ $(function(){
 
         var telp = $("#telp-pasien").val();
         var ktp = $("#nmr-ktp").val();
-        var alamat = $("#alamat-pasien").val();
+        var alamat = $("#alamat").val();
         var kelurahan = $("#kelurahan").val(); 
-        var rt = $("#rt-pasien").val();
-        var rw = $("#rw-pasien").val();
+        var rt = $("#rt").val();
+        var rw = $("#rw").val();
         
         var data = {
             'pasien': nama,
@@ -429,14 +464,70 @@ $(function(){
             'rt': rt,
             'rw': rw
         }
-        console.log(data);
 
-        $("#alamat-pasien").html("<b>"+telp+"</b>");
+        $("#alamat-pasien").html("<b>"+alamat+"</b>");
         $("#ktp-pasien").html("<b>"+ktp+"</b>");
         $("#tlp-pasien").html("<b>"+telp+"</b>");
         $("#kelurahan-pasien").html("<b>"+kelurahan+"</b>");
         $("#rt-pasien").html("<b>"+rt+"</b>");
         $("#rw-pasien").html("<b>"+rw+"</b>");
+    });
+
+    // Petugas - Tambah Pasien
+    // Submit tambah pasien goes here!!!
+
+    $("#tambah-pasien").click(function(){
+        var nama = $("#nama").val();
+        var tgl = $("#tgl-lahir").val();
+        var pekerjaan = $("#pekerjaan").val();
+        var gender = $("#jns-kelamin").val(); 
+        var goldar = $("#goldar").val();
+
+        var telp = $("#telp-pasien").val();
+        var ktp = $("#nmr-ktp").val();
+        var alamat = $("#alamat").val();
+        var kelurahan = $("#kelurahan").val(); 
+        var rt = $("#rt").val();
+        var rw = $("#rw").val();
+        
+        var alamat_domisili = $("#alamat_domisili").val();
+        var rt_domisili = $("#rt_domisili").val();
+        var rw_domisili = $("#rw_domisili").val();
+
+        var poli = $("#poli_pasien").val();
+        var tgl_periksa = $("#tgl_periksa_pasien").val();
+
+        var data = {
+            'pasien': nama,
+            'lahir': tgl,
+            'pekerjaan':pekerjaan,
+            'gender':gender,
+            'goldar':goldar,
+            'telp': telp,
+            'ktp': ktp,
+            'alamat': alamat,
+            'kelurahan': kelurahan,
+            'rt': rt,
+            'rw': rw,
+            'alamat_domisili': alamat_domisili,
+            'rt_domisili': rt_domisili,
+            'rw_domisili': rw_domisili,
+            'poli': poli,
+            'tgl_periksa': tgl_periksa
+        }
+
+        $.ajax({
+            type:"POST",
+            url:"/tambah-pasien-baru",
+            data:data,
+            headers:{
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success:function(data){
+                alert(data);
+            }
+        });
+        return false;
     });
 
     // Update data pasien
@@ -483,6 +574,7 @@ $(function(){
         var pekerjaan = $("#pekerjaan").val();
         var gender = $("#jns-kelamin").val(); 
         var goldar = $("#goldar").val();
+        var jkn = $("#jkn").val();
 
         var telp = $("#telp-pasien").val();
         var ktp = $("#nmr-ktp").val();
@@ -510,7 +602,8 @@ $(function(){
             'rm': rm,
             'alamat_domisili': alamat_domisili,
             'rt_domisili': rt_domisili,
-            'rw_domisili': rw_domisili
+            'rw_domisili': rw_domisili,
+            'jkn':jkn
         }
 
         if(nama === '' || tgl === '' || pekerjaan === 0 || gender === 0 || goldar === 0 || telp === '' || ktp === '' || alamat === '' || kelurahan === 0 || rt === 0 || rw === 0){

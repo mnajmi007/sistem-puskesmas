@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('no_rm');
             $table->string('id_poli');
             $table->boolean('status_periksa');
+            $table->string('status_pasien');
             $table->date('tgl_kunjungan');
             $table->timestamps();
         });

@@ -6,7 +6,10 @@
                     <h3 class="form-title">Login Petugas</h3>
                     <div class="divider"></div>
                     <form action="#">
-                        <div id="notif-kosong"></div>
+                        <div class="form-group">
+                            <label>ID Petugas</label>
+                            <input type="text" class="form-control" id="idPetugas" placeholder="Masukkan username..." autocomplete="off">
+                        </div>
                         <div class="form-group">
                             <label>Username</label>
                             <input type="text" class="form-control" id="username" placeholder="Masukkan username..." autocomplete="off">

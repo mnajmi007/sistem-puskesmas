@@ -63,7 +63,9 @@
                         </div>
 
                     </div>
+
                     <hr class="dashed">
+
                     <div class="tempat-tinggal">
                         <h4 class="form-title">Informasi Profil Pasien</h4>
 
@@ -117,8 +119,35 @@
                                     <span>RT / RW</span>
                                 </div>
                                 <div class="col">
-                                    <span id="rt-pasien"></span>
+                                    <span id="rt-pasien"></span> / <span id="rw-pasien"></span>
                                 </div>
+                            </div>
+                        </div>
+
+                        <hr class="dashed">
+
+                        <div class="tempat-tinggal">
+                            <h4 class="form-title">Informasi Alamat Domisili</h4>
+                            <div class="info info-alamat">
+                                <div class="row">
+                                    <div class="col">
+                                        <span>Alamat Rumah</span>
+                                    </div>
+                                    <div class="col">
+                                        <span id="alamat-pasien-domisili"></span>
+                                    </div>
+                                </div>
+                                <div class="info info-rw-rw">
+                                    <div class="row">
+                                        <div class="col">
+                                            <span>RT / RW</span>
+                                        </div>
+                                        <div class="col">
+                                            <span id="rt-pasien-domisili"></span> / <span id="rw-pasien-domisili"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
 

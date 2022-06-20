@@ -1,3 +1,6 @@
+@if($count_all < 1)
+<h1 class="text-center" style="margin:5rem 0 5rem 0;"><b>Tidak ada pasien!</b></h1>
+@else
 <div class="daftar-pencarian-1" id="daftar-pencarian-1">
     <table class="table table-hover">
         <thead>
@@ -41,3 +44,4 @@
         </tbody>
     </table>
 </div>
+@endif

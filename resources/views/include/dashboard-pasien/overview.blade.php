@@ -13,7 +13,7 @@
                             </i>
                         </span>
                     </div>
-                    <h6><small>Pasien BPJS</small></h6>
+                    <h6><small>Pasien JKN</small></h6>
                     <h5><b>{{ $count_anggotaJKN }} Pasien</b></h5>
                 </div>
             </div>
@@ -31,7 +31,7 @@
                             </i>
                         </span>
                     </div>
-                    <h6><small>Pasien Non BPJS</small></h6>
+                    <h6><small>Pasien Non JKN</small></h6>
                     <h5><b>{{ $count_nonJKN }} Pasien</b></h5>
                 </div>
             </div>

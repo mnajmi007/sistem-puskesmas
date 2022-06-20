@@ -28,11 +28,19 @@
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 <body id="body">
-    @include('include.dashboard-pasien.sidebar')
-    <div class="container dash-info close-bar">
-        <div class="row">
-            @include('include.dashboard-pasien.content')
+    @if(Session::get('username'))
+        @include('include.dashboard-pasien.sidebar')
+        <div class="container dash-info close-bar">
+            <div class="row">
+                @include('include.dashboard-pasien.content')
+            </div>
         </div>
-    </div>
+    @else
+        <div class="text-center no-entry">
+            <img src="{{ asset('assets/images/forbidden.png') }}" alt="forbidden" class="no-entry-image">
+            <h1 class="no-entry-text">Oops, Anda belum login!</h1>
+            <a class="no-entry-redirect" href="/login-petugas">Klik di sini untuk login</a>
+        </div>
+    @endif
 </body>
 </html>
