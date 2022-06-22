@@ -274,21 +274,21 @@ $(function(){
     // Akhir pendaftaran pasien lama dan pasien baru
 
     // Awal JS untuk login petugas
-    $("#masuk-petugas").prop("disabled", true);
+    // $("#masuk-petugas").prop("disabled", true);
 
-    $("#username, #pwd, #idPetugas").keyup(function(){
-        var idPetugas = $("#idPetugas").val();
-        var username = $("#username").val();
-        var pwd = $("#pwd").val();
+    // $("#username, #pwd, #idPetugas").keyup(function(){
+    //     var idPetugas = $("#idPetugas").val();
+    //     var username = $("#username").val();
+    //     var pwd = $("#pwd").val();
 
-        if(username != '' && pwd != '' && idPetugas != ''){
-            $("#masuk-petugas").prop("disabled", false);
-        }
-        else{
-            $("#masuk-petugas").prop("disabled", true);
-        }
-        return false;
-    });
+    //     if(username != '' && pwd != '' && idPetugas != ''){
+    //         $("#masuk-petugas").prop("disabled", false);
+    //     }
+    //     else{
+    //         $("#masuk-petugas").prop("disabled", true);
+    //     }
+    //     return false;
+    // });
 
     // Submit data goes here
     $("#masuk-petugas").click(function(){
@@ -314,6 +314,9 @@ $(function(){
                 else{
                     alert(data);
                 }
+            },
+            error:function(data){
+                alert("Sedang terjadi kesalahan");
             }
         });
         return false;

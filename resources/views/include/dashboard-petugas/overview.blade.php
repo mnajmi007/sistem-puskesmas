@@ -13,8 +13,8 @@
                             </i>
                         </span>
                     </div>
-                    <h6>Jumlah Pasien</h6>
-                    <h5>500 Pasien</h5>
+                    <h6><small>Jumlah Pasien</small></h6>
+                    <h5><b>{{ $count_pasien }} Pasien</b></h5>
                 </div>
             </div>
         </div>
@@ -31,8 +31,8 @@
                             </i>
                         </span>
                     </div>
-                    <h6>Jumlah Antrian</h6>
-                    <h5>45 Antrian</h5>
+                    <h6><small>Jumlah Antrian</small></h6>
+                    <h5><b>{{ $count_antrian }} Antrian</b></h5>
                 </div>
             </div>
         </div>
@@ -49,8 +49,8 @@
                             </i>
                         </span>
                     </div>
-                    <h6>Jumlah Kunjungan</h6>
-                    <h5>400 Kunjungan</h5>
+                    <h6><small>Jumlah Kunjungan</small></h6>
+                    <h5><b>{{ $count_kunjungan }} Kunjungan</b></h5>
                 </div>
             </div>
         </div>

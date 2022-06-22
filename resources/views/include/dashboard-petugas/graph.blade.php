@@ -6,8 +6,39 @@
             <div id="grafikPenyakit"></div>
             <script>
                 function jml_penyakit(){
-                    var xArray = ["Demam", "Pusing", "Batuk", "Flu", "Asma", "TBC", "Katarak", "Gigi Lubang"];
-                    var yArray = [20, 15, 25, 12, 30, 18, 20, 38];
+                    var xArray = ["Supernumerary", "Persistensi gigi", "Embedded", "Impacted", "Karies email", "Hamil + hypertensi", "Hamil Ektopik", "Hamil dengan anemi", "Hamil Normal", "Hamil lewat waktu"];
+                    var yArray = [
+                        <?php
+                        echo DB::table('diagnosa_pasien')->where('id_diagnosa', '=', 'K.00.1')->count();
+                        ?>,
+                        <?php
+                        echo DB::table('diagnosa_pasien')->where('id_diagnosa', '=', 'K.00.6')->count();
+                        ?>,
+                        <?php
+                        echo DB::table('diagnosa_pasien')->where('id_diagnosa', '=', 'K.01.0')->count();
+                        ?>,
+                        <?php
+                        echo DB::table('diagnosa_pasien')->where('id_diagnosa', '=', 'K.01.1')->count();
+                        ?>,
+                        <?php
+                        echo DB::table('diagnosa_pasien')->where('id_diagnosa', '=', 'K.02.0')->count();
+                        ?>,
+                        <?php
+                        echo DB::table('diagnosa_pasien')->where('id_diagnosa', '=', 'O116')->count();
+                        ?>,
+                        <?php
+                        echo DB::table('diagnosa_pasien')->where('id_diagnosa', '=', 'O00.9')->count();
+                        ?>,
+                        <?php
+                        echo DB::table('diagnosa_pasien')->where('id_diagnosa', '=', 'O99.0')->count();
+                        ?>,
+                        <?php
+                        echo DB::table('diagnosa_pasien')->where('id_diagnosa', '=', 'O80.9')->count();
+                        ?>,
+                        <?php
+                        echo DB::table('diagnosa_pasien')->where('id_diagnosa', '=', 'O48')->count();
+                        ?>
+                    ];
                     var data = [{
                         x:xArray,
                         y:yArray,
@@ -24,8 +55,33 @@
             <div id="grafikKecamatan"></div>
             <script>
                 function jml_kecamatan(){
-                    var xArray = ["Bendan Duwur", "Bendan Ngisor", "Gajahmungkur", "Karangrejo", "Lempongsari", "Petompon", "Sampangan"];
-                    var yArray = [24, 56, 55, 147, 58, 39, 58, 78];
+                    var xArray = ["Bendan Duwur", "Bendan Ngisor", "Bendungan", "Gajahmungkur", "Karangrejo", "Lempong sari", "Petompon", "Sampangan"];
+                    var yArray = [
+                        <?php
+                            echo DB::table('pasien')->where('kelurahan', '=', 'Bendan Duwur')->count()
+                        ?>,
+                        <?php
+                            echo DB::table('pasien')->where('kelurahan', '=', 'Bendan Ngisor')->count()
+                        ?>,
+                        <?php
+                            echo DB::table('pasien')->where('kelurahan', '=', 'Bendungan')->count()
+                        ?>,
+                        <?php
+                            echo DB::table('pasien')->where('kelurahan', '=', 'Gajahmungkur')->count()
+                        ?>,
+                        <?php
+                            echo DB::table('pasien')->where('kelurahan', '=', 'Karangrejo')->count()
+                        ?>,
+                        <?php
+                            echo DB::table('pasien')->where('kelurahan', '=', 'Lempong sari')->count()
+                        ?>,
+                        <?php
+                            echo DB::table('pasien')->where('kelurahan', '=', 'Petompon')->count()
+                        ?>,
+                        <?php
+                            echo DB::table('pasien')->where('kelurahan', '=', 'Sampangan')->count()
+                        ?>
+                    ];
                     var data = [{labels:xArray, values:yArray, hole:.5, type:"pie"}];
                     Plotly.newPlot("grafikKecamatan", data);
                 }
@@ -38,8 +94,42 @@
             <div id="grafikPekerjaan"></div>
             <script>
                 function jml_pekerjaan(){
-                    var xArray = ["Buruh", "Tidak Bekerja", "Wiraswasta", "BUMN", "Perkebunan", "Perdagangan", "Kepolisian", "TNI", "PNS", "Pelajar/Mahasiswa"];
-                    var yArray = [100, 50, 50, 200, 400, 100, 50, 100, 25, 25];
+                    var xArray = ["Wiraswasta", "BUMN", "Buruh", "Tidak/Belum Bekerja", "Rumah Tangga", "Pelajar/Mahasiswa", "Pensiunan", "PNS", "Polisi/TNI", "Petani/Perkebunan", "Perdagangan"];
+                    var yArray = [
+                        <?php
+                            echo DB::table('pasien')->where('pekerjaan', '=', 'Wiraswasta')->count()
+                        ?>,
+                        <?php
+                            echo DB::table('pasien')->where('pekerjaan', '=', 'BUMN')->count()
+                        ?>,
+                        <?php
+                            echo DB::table('pasien')->where('pekerjaan', '=', 'Buruh')->count()
+                        ?>,
+                        <?php
+                            echo DB::table('pasien')->where('pekerjaan', '=', 'Tidak/Belum Bekerja')->count()
+                        ?>,
+                        <?php
+                            echo DB::table('pasien')->where('pekerjaan', '=', 'Rumah Tangga')->count()
+                        ?>,
+                        <?php
+                            echo DB::table('pasien')->where('pekerjaan', '=', 'Pelajar/Mahasiswa')->count()
+                        ?>,
+                        <?php
+                            echo DB::table('pasien')->where('pekerjaan', '=', 'Pensiunan')->count()
+                        ?>,
+                        <?php
+                            echo DB::table('pasien')->where('pekerjaan', '=', 'PNS')->count()
+                        ?>,
+                        <?php
+                            echo DB::table('pasien')->where('pekerjaan', '=', 'Polisi/TNI')->count()
+                        ?>,
+                        <?php
+                            echo DB::table('pasien')->where('pekerjaan', '=', 'Petani/Perkebunan')->count()
+                        ?>,
+                        <?php
+                            echo DB::table('pasien')->where('pekerjaan', '=', 'Perdagangan')->count()
+                        ?>
+                    ];
                     var data = [{
                         labels:xArray,
                         values:yArray,

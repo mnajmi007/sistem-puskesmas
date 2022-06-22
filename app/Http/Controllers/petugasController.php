@@ -50,22 +50,28 @@ class petugasController extends Controller
         $pwd = $req->pwd;
 
         // Mencocokan username dan password
-        $cari_petugas = DB::table('petugas')
-                        ->where('id_petugas', '=', $idPetugas)
-                        ->first();
+        $petugas = DB::table('petugas')->where('id_petugas', '=', $idPetugas);
+        $cari_petugas = $petugas->first();
+        $count = $petugas->count();
 
-        // Dekripsi data login petugas 
-        $id_petugas = $cari_petugas->id_petugas;
-        $decryptUsername = Crypt::decryptString($cari_petugas->username);
-        $decryptPwd = Crypt::decryptString($cari_petugas->pwd);
-
-        if($username != $decryptUsername || $pwd != $decryptPwd){
-            echo"Username atau password salah!";
+        // Cek data login petugas
+        if($count < 1){
+            echo"Petugas tidak terdaftar!";
         }
         else{
-            $session_petugas = Session::put('username', $decryptUsername);
-            $session_id = Session::put('id_petugas', $id_petugas);
-            echo"Berhasil";
+            // Dekripsi data login petugas 
+            $id_petugas = $cari_petugas->id_petugas;
+            $decryptUsername = Crypt::decryptString($cari_petugas->username);
+            $decryptPwd = Crypt::decryptString($cari_petugas->pwd);
+
+            if($username != $decryptUsername || $pwd != $decryptPwd){
+                echo"Username atau password salah!";
+            }
+            else{
+                $session_petugas = Session::put('username', $decryptUsername);
+                $session_id = Session::put('id_petugas', $id_petugas);
+                echo"Berhasil";
+            }
         }
     }
 
@@ -238,6 +244,18 @@ class petugasController extends Controller
         }
     }
 
+    public function dashPetugas(){
+        $count_pasien = Pasien::all()->count();
+        $count_kunjungan = DB::table('kunjungan')->count();
+        $count_antrian = DB::table('kunjungan')->where('status_periksa', '=', 'Proses')->count();
+        
+        return view('dashPetugas',[
+            'count_pasien'=>$count_pasien,
+            'count_kunjungan'=>$count_kunjungan,
+            'count_antrian'=>$count_antrian
+        ]);
+    }
+
     public function informasiPasien(){
         // Menghitung pasien yang memiliki JKN
         $get_anggotaJKN = Pasien::where('status_jkn','=','Anggota');
@@ -248,7 +266,7 @@ class petugasController extends Controller
         $count_nonJKN = $get_nonJKN->count();
         
         // Menghitung pasien baru
-        $get_pasienBaru = DB::table('kunjungan')->where('status_pasien', '=', 'Baru');
+        $get_pasienBaru = DB::table('kunjungan')->whereDate('created_at', date("Y-m-d"));
         $count_pasienBaru = $get_pasienBaru->count();
 
         // Menghitung pasien lama

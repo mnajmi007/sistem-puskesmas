@@ -26,9 +26,7 @@ Route::get('/login-petugas', function(){
     return view('loginPetugas');
 });
 
-Route::get('/dashboard', function(){
-    return view('dashPetugas');
-});
+Route::get('/dashboard', 'App\Http\Controllers\petugasController@dashPetugas');
 
 Route::get('/dashboard/pasien', 'App\Http\Controllers\petugasController@informasiPasien');
 

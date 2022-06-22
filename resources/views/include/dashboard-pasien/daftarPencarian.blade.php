@@ -7,7 +7,7 @@
             <tr>
                 <th>Nama Pasien</th>
                 <th>No RM</th>
-                <th>Kepemilikan BPJS</th>
+                <th>Kepemilikan JKN</th>
                 <th>No KTP</th>
                 <th>Tanggal Daftar</th>
                 <th>Aksi</th>
@@ -19,13 +19,13 @@
                     <td>{{ $pasien->nama }}</td>
                     <td>{{ $pasien->no_rm }}</td>
                     @if($pasien->status_jkn == NULL)
-                        <td><i>Pasien Baru</i></td>
+                        <td><i>-</i></td>
                     @else
                         <td><i>{{ $pasien->status_jkn }}</i></td>
                     @endif
 
                     @if($pasien->nik == NULL)
-                        <td><i>Pasien Baru</i></td>
+                        <td><i>-</i></td>
                     @else
                         <td><i>{{ $pasien->nik }}</i></td>
                     @endif
